@@ -2,6 +2,7 @@
 ## Member:
 - Phong Lam Nguyen - s331150
 - Kieu QT Nguyen - s339142
+- Daljeet Singh - s332310
 
 ## Git Content:
 
