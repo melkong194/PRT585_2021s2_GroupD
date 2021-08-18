@@ -9,6 +9,6 @@
 |:-:|:-:|:-:|
 | 1 | PhongLamNguyen | - Hello World + Todo <br> - SingalR |
 | 1 | Kieu QT Nguyen  | HelloBlazor + TodoList + BlazorserverSignalR  |
-| 1 |   |   |
+| 1 | Daljeet Singh  | Blazor + TodoList + SignalR   |
 
 ### Note: Please update README every week.
