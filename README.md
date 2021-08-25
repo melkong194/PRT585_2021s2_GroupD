@@ -11,5 +11,6 @@
 | 1 | PhongLamNguyen | - Hello World + Todo <br> - SingalR |
 | 1 | Kieu QT Nguyen  | HelloBlazor + TodoList + BlazorserverSignalR  |
 | 1 | Daljeet Singh  | Blazor + TodoList + SignalR   |
+| 2 | PhongLamNguyen | - Task A and Task B (without connecting database to SQL Server, using local SQL database manager instead) |
 
 ### Note: Please update README every week.
