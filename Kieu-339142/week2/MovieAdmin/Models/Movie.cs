@@ -19,6 +19,6 @@ namespace MovieAdmin.Models
         public Language Language { get; set; }
 
         [Required]
-        public Category Category { get; set; }
+        public string Category { get; set; }
     }
 }
