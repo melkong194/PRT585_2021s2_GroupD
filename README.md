@@ -12,5 +12,6 @@
 | 1 | Kieu QT Nguyen  | HelloBlazor + TodoList + BlazorserverSignalR  |
 | 1 | Daljeet Singh  | Blazor + TodoList + SignalR   |
 | 2 | PhongLamNguyen | - Task A and Task B (without connecting database to SQL Server, using local SQL database manager instead) |
+| 2 | Kieu QT Nguyen | - Task A and Task B  |
 
 ### Note: Please update README every week.
