@@ -13,5 +13,6 @@
 | 1 | Daljeet Singh  | Blazor + TodoList + SignalR   |
 | 2 | PhongLamNguyen | - Task A and Task B (without connecting database to SQL Server, using local SQL database manager instead) |
 | 2 | Kieu QT Nguyen | - Task A and Task B  |
+| 3 | PhongLamNguyen | - All task 1,2,3 built in Task1 application |
 
 ### Note: Please update README every week.
