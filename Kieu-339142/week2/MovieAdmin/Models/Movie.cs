@@ -16,7 +16,7 @@ namespace MovieAdmin.Models
         public DateTime ReleaseDate { get; set; }
         public string Director { get; set; }
         public string ContactEmail { get; set; }
-        public Language Language { get; set; }
+        public String Language { get; set; }
 
         [Required]
         public string Category { get; set; }

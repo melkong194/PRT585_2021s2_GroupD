@@ -36,7 +36,7 @@
                 <label asp-for="Language" class="control-label"></label>
 
                 @Html.DropDownList("Select Language",
-                    new SelectList(Enum.GetValues(typeof(Language))),
+                    new SelectList(Language),
                     new { @class = "form-control" })
    
             </div>

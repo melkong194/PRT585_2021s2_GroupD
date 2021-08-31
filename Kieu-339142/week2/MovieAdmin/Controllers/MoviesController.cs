@@ -71,6 +71,7 @@ namespace MovieAdmin.Controllers
         // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
             ViewBag.Category = new SelectList(from m in _context.Category select m.Name);
             if (id == null)
             {
