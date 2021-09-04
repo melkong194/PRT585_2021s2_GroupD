@@ -18,9 +18,9 @@ namespace Task2.Controllers
         public IEnumerable<Student> Get()
         {
             List<Student> oStudents = new List<Student>() { 
-                new Student() {Id = 1, Name = "PhongLam", Roll = 1001},
-                new Student() {Id = 2, Name = "Melko", Roll = 1002},
-                new Student() {Id = 3, Name = "Daljeet", Roll = 1003},
+                new Student() {Id = 1, Name = "PhongLam", Roll = 10},
+                new Student() {Id = 2, Name = "Melko", Roll = 11},
+                new Student() {Id = 3, Name = "Daljeet", Roll = 12},
             };
 
             return oStudents;
