@@ -14,6 +14,7 @@
 | 2 | PhongLamNguyen | - Task A and Task B (without connecting database to SQL Server, using local SQL database manager instead) |
 | 2 | Kieu QT Nguyen | - Task A and Task B  |
 | 3 | PhongLamNguyen | - All task 1,2,3 built in Task1 application |
+| 3 | Kieu QT Nguyen | - Task 1,2,3 |
 | 4 | PhongLamNguyen | - Task 1 and Task 2 completed |
 
 ### Note: Please update README every week.
