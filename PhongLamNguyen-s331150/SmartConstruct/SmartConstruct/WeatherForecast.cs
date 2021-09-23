@@ -1,6 +1,6 @@
 using System;
 
-namespace PrototypeDemo
+namespace SmartConstruct
 {
     public class WeatherForecast
     {

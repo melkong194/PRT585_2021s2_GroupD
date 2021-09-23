@@ -1,11 +1,11 @@
 {
-  "name": "prototypedemo",
+  "name": "smartconstruct",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:ssr": "ng run PrototypeDemo:server:dev",
+    "build:ssr": "ng run SmartConstruct:server:dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
