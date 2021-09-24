@@ -1,5 +1,5 @@
 <header>
-  <nav
+  <!--<nav
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
@@ -40,5 +40,46 @@
         </ul>
       </div>
     </div>
+  </nav>-->
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">SmartConstructing</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/index']">
+              Home
+              <span class="visually-hidden">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/timesheet']">Timesheets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Accounts Management</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">About</a>
+          </li>
+          <div class="profilenav">
+            <li class="nav-item profileitem">
+              <a class="nav-link">Company Code: 99999</a>
+            </li>
+            <li class="nav-item profileitem">
+              <a class="nav-link"><img src="https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png" alt="Avatar" class="avatar"> Employee's Name</a>
+            </li>
+          </div>
+      </ul>
+    </div>
+    </div>
   </nav>
+
+
 </header>
