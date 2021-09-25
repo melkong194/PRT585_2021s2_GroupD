@@ -1,23 +1,14 @@
-<div class="page">
-  <header tabindex="0">Smart Constructing</header>
-  <div id="nav-container">
-    <div class="bg"></div>
-    <div class="button" tabindex="0">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div id="nav-content" tabindex="0">
-      <ul>
-        <li><img src="https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png" alt="Avatar" class="avatar"> Employee's Name</li>
-        <li>Employee Code: 99999</li>
-        <li>Current Status</li>
-        <li>Total Hours: 0.0</li>
-        <li><a>Profile</a></li>
-        <li><a>Setting</a></li>
-        <li><a>About</a></li>
-      </ul>
-    </div>
-  </div>
+<app-nav-menu></app-nav-menu>
 
-</div>
+<agm-map [latitude]="locations[0].lat" [longitude]="locations[0].lng" [zoom]="15">
+  <agm-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng" [iconUrl]="icon"></agm-marker>
+</agm-map>
+
+<div class="currentTime">{{ myTime }}</div>
+<div class="currentDate">{{ myDate }}</div>
+
+<a class="clockbutton btn btn-secondary"><span><i class="fa fa-clock-o" aria-hidden="true"></i></span><span>Start Shift</span></a>
+
+<button type="button" class="btn btn-primary breakbutton"><i class="fa fa-coffee" aria-hidden="true"></i> Take Break</button>
+
+
