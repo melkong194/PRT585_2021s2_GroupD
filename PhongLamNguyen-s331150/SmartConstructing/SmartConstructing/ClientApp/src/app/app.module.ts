@@ -12,8 +12,11 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { IndexComponent } from './index/index.component';
 import { TimeSheetComponent } from './timesheet/timesheet.component';
 import { MbIndexComponent } from './mbindex/mbindex.component';
+import { MbNavMenuComponent } from './mbnav-menu/mbnav-menu.component';
 
 import { AgmCoreModule } from '@agm/core';
+
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { AgmCoreModule } from '@agm/core';
     FetchDataComponent,
     IndexComponent,
     TimeSheetComponent,
-    MbIndexComponent
+    MbIndexComponent,
+    MbNavMenuComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,7 +44,8 @@ import { AgmCoreModule } from '@agm/core';
     ]),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAkNi7U2_6ZqRDlun0DcHcXI6yiJg8oVrg'
-    })
+    }),
+    NgbCollapseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

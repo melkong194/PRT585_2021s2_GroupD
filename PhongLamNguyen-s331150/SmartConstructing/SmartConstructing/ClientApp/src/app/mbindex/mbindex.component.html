@@ -1,4 +1,6 @@
-<app-nav-menu></app-nav-menu>
+<app-mbnav-menu></app-mbnav-menu>
+
+
 
 <agm-map [latitude]="locations[0].lat" [longitude]="locations[0].lng" [zoom]="15">
   <agm-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng" [iconUrl]="icon"></agm-marker>
@@ -7,7 +9,11 @@
 <div class="currentTime">{{ myTime }}</div>
 <div class="currentDate">{{ myDate }}</div>
 
+<a class="clockbuttonShadow1"></a>
+<a class="clockbuttonShadow2"></a>
 <a class="clockbutton btn btn-secondary"><span><i class="fa fa-clock-o" aria-hidden="true"></i></span><span>Start Shift</span></a>
+
+
 
 <button type="button" class="btn btn-primary breakbutton"><i class="fa fa-coffee" aria-hidden="true"></i> Take Break</button>
 

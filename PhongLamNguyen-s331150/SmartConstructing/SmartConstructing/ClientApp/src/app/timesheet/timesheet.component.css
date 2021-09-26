@@ -4,9 +4,13 @@
   padding: 1%;
 }
 
-.timesheetcalendar {
-    margin: 0 2% 0 2%;
+.timesheetbutton button {
+    width: 35%;
 }
+
+  .timesheetcalendar {
+    margin: 0 2% 0 2%;
+  }
 
 .timesheetcalendar .card-header {
     text-align: center;
