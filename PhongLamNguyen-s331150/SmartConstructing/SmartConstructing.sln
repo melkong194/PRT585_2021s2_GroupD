@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartConstructing", "SmartConstructing\SmartConstructing.csproj", "{B66EC228-D829-4C07-A4BA-661DE28CD6A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B66EC228-D829-4C07-A4BA-661DE28CD6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B66EC228-D829-4C07-A4BA-661DE28CD6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B66EC228-D829-4C07-A4BA-661DE28CD6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B66EC228-D829-4C07-A4BA-661DE28CD6A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {481C2574-974A-461C-A7A9-8DA230E5E709}
+	EndGlobalSection
+EndGlobal

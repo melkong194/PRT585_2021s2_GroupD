@@ -1,0 +1,141 @@
+
+<app-nav-menu></app-nav-menu>
+
+<!-- Table -->
+<div class="employeeTable">
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">Employee</th>
+        <th scope="col">Role</th>
+        <th scope="col">Current Status</th>
+        <th scope="col">Total hours</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="table-active">
+        <th scope="row"><img src="https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png" alt="Avatar" class="avatar"> Employee's Name</th>
+        <td>Manager</td>
+        <td>Vacation</td>
+        <td>0.0</td>
+      </tr>
+      <tr class="table-active">
+        <th scope="row"><img src="https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png" alt="Avatar" class="avatar"> Employee's Name</th>
+        <td>Manager</td>
+        <td>Vacation</td>
+        <td>0.0</td>
+      </tr>
+      <tr class="table-active">
+        <th scope="row"><img src="https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png" alt="Avatar" class="avatar"> Employee's Name</th>
+        <td>Manager</td>
+        <td>Vacation</td>
+        <td>0.0</td>
+      </tr>
+      <tr class="table-active">
+        <th scope="row"><img src="https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png" alt="Avatar" class="avatar"> Employee's Name</th>
+        <td>Manager</td>
+        <td>Vacation</td>
+        <td>0.0</td>
+      </tr>
+      <tr class="table-active">
+        <th scope="row"><img src="https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png" alt="Avatar" class="avatar"> Employee's Name</th>
+        <td>Manager</td>
+        <td>Vacation</td>
+        <td>0.0</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div>
+    <ul class="pagination">
+      <li class="page-item disabled">
+        <a class="page-link" href="#">&laquo;</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link">4</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link">5</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link">&raquo;</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="bottomPannel">
+  <div class="card border-info mb-3 actlog">
+    <div class="card-header">Activities Logs</div>
+    <div class="card-body">
+      <table class="acttable">
+        <tr>
+          <th>07:00</th>
+          <th><i class="fa fa-arrows-h"></i></th>
+          <th>Employee 1 clocked in</th>
+        </tr>
+        <tr>
+          <th>07:00</th>
+          <th><i class="fa fa-arrows-h"></i></th>
+          <th>Employee 1 clocked in</th>
+        </tr>
+        <tr>
+          <th>07:00</th>
+          <th><i class="fa fa-arrows-h"></i></th>
+          <th>Employee 1 clocked in</th>
+        </tr>
+        <tr>
+          <th>07:00</th>
+          <th><i class="fa fa-arrows-h"></i></th>
+          <th>Employee 1 clocked in</th>
+        </tr>
+        <tr>
+          <th>07:00</th>
+          <th><i class="fa fa-arrows-h"></i></th>
+          <th>Employee 1 clocked in</th>
+        </tr>
+        <tr>
+          <th>07:00</th>
+          <th><i class="fa fa-arrows-h"></i></th>
+          <th>Employee 1 clocked in</th>
+        </tr>
+        <tr>
+          <th>07:00</th>
+          <th><i class="fa fa-arrows-h"></i></th>
+          <th>Employee 1 clocked in</th>
+        </tr>
+        <tr>
+          <th>07:00</th>
+          <th><i class="fa fa-arrows-h"></i></th>
+          <th>Employee 1 clocked in</th>
+        </tr>
+        <tr>
+          <th>07:00</th>
+          <th><i class="fa fa-arrows-h"></i></th>
+          <th>Employee 1 clocked in</th>
+        </tr>
+        
+      </table>
+    </div>
+  </div>
+
+  <div class="card text-white bg-warning mb-3 maptrack">
+    <div class="card-header">Map Tracker</div>
+    <agm-map [latitude]="locations[0].lat" [longitude]="locations[0].lng" [zoom]="15">
+      <agm-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng" [iconUrl]="icon"></agm-marker>
+    </agm-map>
+  </div>
+</div>
+
+
