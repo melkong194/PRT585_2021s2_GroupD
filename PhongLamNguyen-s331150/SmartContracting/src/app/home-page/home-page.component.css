@@ -1,0 +1,54 @@
+.homePage {
+  height: 100%;
+  width: 100%;
+}
+
+.tableHome table {
+    width: 100%;
+}
+  
+.tableHome .mat-form-field {
+  font-size: 15px;
+  width: 15%;
+  margin-left: 5%;
+}
+
+.tableHome td, th {
+  width: 25%;
+}
+
+.tableHome .mat-elevation-z8 {
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+
+
+.cardHome {
+  display: flex;
+  justify-content: space-between;
+  margin: 3% 3% 0 3%;
+}
+
+.example-card {
+  height: 730px;
+}
+
+.actLogHome {
+  width: 20%;
+}
+
+.mapHome {
+  width: 75%;
+}
+
+agm-map {
+  height: 700px;
+}
