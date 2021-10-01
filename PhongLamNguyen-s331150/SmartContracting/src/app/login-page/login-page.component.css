@@ -152,10 +152,11 @@
     margin: auto;
     text-align: center;
     width: 70%;
+    color: white;
   }
   
   .content p {
-    font-size: 90%;
+    font-size: 110%;
   }
   
   .content label, .toggle {
@@ -184,8 +185,8 @@
     font-size: 90%;
     font-weight: bolder;
     width: 100%;
-    margin-left: 2.5%;
-    margin-top: 0.7%;
+    margin-left: 2%;
+    margin-top: 4.3%;
     position: absolute;
     display: flex;
     justify-content: space-around;
