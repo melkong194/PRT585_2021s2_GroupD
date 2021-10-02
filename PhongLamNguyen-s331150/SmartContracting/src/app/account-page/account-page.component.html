@@ -1,0 +1,148 @@
+<app-nav-home></app-nav-home>
+
+<mat-tab-group>
+    <mat-tab label="Create Accounts" id="tab1"> 
+
+        <div class="tab">
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput id="name">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Account</mat-label>
+                <input matInput id="account">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" id="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select id="role" [(ngModel)]="selectedRole" name="role" [formControl]="roleControl" required>
+                    <mat-option *ngFor="let role of roles" [value]="role.value">{{ role.viewValue }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="roleControl.hasError('required')">Please choose a role!</mat-error>
+            </mat-form-field>
+
+            <br>
+
+            <button mat-raised-button color="primary" (click)="createUser()">Create</button>
+
+            <br>
+
+            <div class="invalid-feedback" id="invalid-feedback">Request fails, please try again.</div>
+            <div class="valid-feedback" id="valid-feedback">You have succeed adding new User.</div>
+
+        </div>
+        
+    </mat-tab>
+
+    <mat-tab label="Update Accounts" id="tab2"> 
+        
+        <div class="tab">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Select User ID</mat-label>
+                <mat-select id="user" [(ngModel)]="selectedUser" name="user">
+                    <mat-option (click)="noneRefresh()">None</mat-option>
+                    <mat-option (click)="selectUser()" *ngFor="let user of users" [value]="user.value">{{ user.viewValue }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput id="nameUpdate">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Account</mat-label>
+                <input matInput id="accountUpdate">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" id="passwordUpdate">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select id="role" [(ngModel)]="selectedRole" name="role" [formControl]="roleControl" required>
+                    <mat-option *ngFor="let role of roles" [value]="role.value">{{ role.viewValue }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="roleControl.hasError('required')">Please choose a role!</mat-error>
+            </mat-form-field>
+
+            <br>
+
+            <button mat-raised-button color="primary" (click)="updateUser()">Update</button>
+
+            <br>
+
+            <div class="invalid-feedback" id="invalid-feedback">Request fails, please try again.</div>
+            <div class="valid-feedback" id="valid-feedback">You have succeed updating new User.</div>
+
+        </div>
+    
+    
+    </mat-tab>
+    <mat-tab label="Delete Accounts"> 
+        
+        <div class="tab">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Select User ID</mat-label>
+                <mat-select id="user" [(ngModel)]="selectedUser" name="user">
+                    <mat-option (click)="noneRefresh()">None</mat-option>
+                    <mat-option (click)="selectUser()" *ngFor="let user of users" [value]="user.value">{{ user.viewValue }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput id="nameUpdate" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Account</mat-label>
+                <input matInput id="accountUpdate" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" id="passwordUpdate" readonly>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Role</mat-label>
+                <input matInput id="roleDelete" readonly>
+            </mat-form-field>
+
+            <br>
+
+            <button mat-raised-button color="primary" (click)="deleteUser()">Delete</button>
+
+            <br>
+
+            <div class="invalid-feedback" id="invalid-feedback">Request fails, please try again.</div>
+            <div class="valid-feedback" id="valid-feedback">You have succeed deleting User.</div>
+
+        </div>
+    
+    </mat-tab>
+    <mat-tab label="View All Accounts"> Content 2 </mat-tab>
+  </mat-tab-group>

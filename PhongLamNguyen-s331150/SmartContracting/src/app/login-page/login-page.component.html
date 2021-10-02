@@ -22,8 +22,8 @@
   
               <p class="text-muted"> Please enter your login and password!</p>
               <input type="text" name="" placeholder="Username" class="form-control" id="inputUserName">
-              <input type="password" name="" placeholder="Password">
-              <div class="invalid-feedback" id="invalid-feedback">Sorry, that username's taken. Try another?</div>
+              <input type="password" name="" placeholder="Password" id="inputPassword">
+              <div class="invalid-feedback" id="invalid-feedback">Login fails, Try again please?</div>
               <a class="forgot text-muted">Forgot password?</a>
               <input type="submit" name="" value="Login" (click)="checkLoginType()" [routerLinkActive]="['link-active']" [routerLink]="[link]">
   

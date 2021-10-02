@@ -11,6 +11,8 @@ import { MbHomePageComponent } from './mb-home-page/mb-home-page.component';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { AgmCoreModule } from '@agm/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -26,6 +28,9 @@ import { TimeSheetComponent } from './time-sheet/time-sheet.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatMenuModule} from '@angular/material/menu';
+import { AccountPageComponent } from './account-page/account-page.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -34,20 +39,25 @@ import {MatMenuModule} from '@angular/material/menu';
     HomePageComponent,
     MbHomePageComponent,
     NavHomeComponent,
-    TimeSheetComponent
+    TimeSheetComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: LoginPageComponent, pathMatch: 'full' },
       { path: 'home', component: HomePageComponent},
       { path: 'mbhome', component: MbHomePageComponent},
+      { path: 'account', component: AccountPageComponent},
     ]),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAkNi7U2_6ZqRDlun0DcHcXI6yiJg8oVrg'
     }),
+    FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -60,7 +70,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     MatCardModule,
     MatChipsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTabsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

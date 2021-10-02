@@ -4,9 +4,11 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
 export interface UserData {
-  name: string;
-  progress: string;
-  fruit: string;
+  name: string,
+  role: string,
+  status: string,
+  totalHour: string,
+  report: string
 }
 
 const FRUITS: string[] = [
@@ -34,19 +36,25 @@ export class HomePageComponent implements AfterViewInit  {
     // Create 100 users
     const users = [
       {
-        name: "a",
-        progress: "12",
-        fruit: "aa",
+        name: "employee 1",
+        role: "12",
+        status: "aa",
+        totalHour: "10",
+        report: ""
       },
       {
         name: "a",
-        progress: "12",
-        fruit: "aa",
+        role: "12",
+        status: "aa",
+        totalHour: "10",
+        report: ""
       },
       {
         name: "a",
-        progress: "12",
-        fruit: "aa",
+        role: "12",
+        status: "aa",
+        totalHour: "10",
+        report: ""
       }
     ];
 

@@ -5,8 +5,9 @@
       
       <div fxShow="true" fxHide.lt-md>
 
-        <a mat-button>Home</a>
+        <a mat-button (click)="navHome()">Home</a>
         <a mat-button>Timesheet</a>
+        <a mat-button (click)="navAccount()">Account Managing</a>
 
       </div>
 
@@ -14,8 +15,7 @@
 
       <div fxShow="true" fxHide.lt-md>
 
-        <a mat-button>Code: 99999</a>
-        <a mat-button>Employee 1</a>
+        <a mat-button>{{ user }}</a>
         <a mat-button><img class="navAvatar" src="https://material.angular.io/assets/img/examples/shiba1.jpg"></a>
 
       </div>

@@ -22,14 +22,18 @@
   margin: 0 auto;
 }
 
-
-
 .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
 
+.tableName {
+  display: flex;
+}
 
+.nameText {
+  margin: 3% 0 0 3%;
+}
 
 .cardHome {
   display: flex;
