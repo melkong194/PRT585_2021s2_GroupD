@@ -1,0 +1,52 @@
+<div class="homePage">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>SmartContracting</span>
+        
+        <span class="menu-spacer"></span>
+
+        <div fxShow="true" fxHide.lt-md>
+
+          <a mat-button>Avatar</a>
+          <a mat-button>Profile</a>
+
+        </div>
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <mat-sidenav-container fxFlexFill>
+      <mat-sidenav #sidenav class="mbMenu">
+        <mat-nav-list>
+          <img src="https://material.angular.io/assets/img/examples/shiba1.jpg">
+          <p>Employee 1</p>
+          <p>Total hours: 99 hours</p>
+          <p>Employee Code: 99999</p>
+          <a mat-list-item>Profile</a>
+          <a mat-list-item>Timesheet</a>
+          <a href="" mat-list-item>Logout</a>
+
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
+
+        <agm-map [latitude]="locations[0].lat" [longitude]="locations[0].lng" [zoom]="15" [disableDefaultUI]="true">
+          <agm-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng"></agm-marker>
+        </agm-map>
+
+        <div class="currentTime">{{ myTime }}</div>
+        <div class="currentDate">{{ myDate }}</div>
+
+        <a class="clockbuttonShadow1"></a>
+        <a class="clockbuttonShadow2"></a>
+        <a class="clockbutton"><span><i class="fa fa-clock-o" aria-hidden="true" (click)="clocking()"></i></span><span>Start Shift</span></a>
+
+        <button mat-raised-button color="primary" type="button" class="breakbutton"><i class="fa fa-coffee" aria-hidden="true"></i> Take Break</button>
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+  

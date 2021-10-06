@@ -1,0 +1,93 @@
+.homePage {
+  height: 100%;
+  width: 100%;
+}
+
+.tableHome table {
+    width: 100%;
+}
+  
+.tableHome .mat-form-field {
+  font-size: 15px;
+  width: 15%;
+  margin-left: 5%;
+}
+
+.tableHome td, th {
+  width: 25%;
+}
+
+.tableHome .mat-elevation-z8 {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.tableName {
+  display: flex;
+}
+
+.nameText {
+  margin: 3% 0 0 3%;
+}
+
+.cardHome {
+  display: flex;
+  justify-content: space-between;
+  margin: 3% 3% 0 3%;
+}
+
+.cardHome table {
+  table-layout: auto;
+}
+
+.example-card {
+  height: 730px;
+}
+
+.actLogHome {
+  width: 23%;
+}
+
+.mapHome {
+  width: 70%;
+}
+
+.mapHome mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.mapHome .searchMap {
+  margin: -2% -20% 0 0;
+  width: 50%;
+}
+
+.searchMap mat-form-field {
+  width: 50%;
+  margin-right: 3%;
+}
+
+.listDrop {
+  display: flex;
+}
+
+.listDrop img {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin: 6% 0 auto -10%;
+}
+
+.listDrop a {
+  margin-left: 5%;
+}
+
+agm-map {
+  height: 700px;
+}

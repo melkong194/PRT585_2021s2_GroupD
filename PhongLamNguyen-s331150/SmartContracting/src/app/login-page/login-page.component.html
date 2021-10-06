@@ -1,0 +1,37 @@
+<div class="homeBody">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <form onsubmit="event.preventDefault()" class="box">
+              <h1>Login</h1>
+  
+              <input type="checkbox" id="switch">
+              <div class="app">
+                <div class="content">
+                  <label for="switch">
+                    <div class="toggle" id="typeToggle"></div>
+                    <div class="names">
+                      <p class="light">Contractors</p>
+                      <p class="dark">Subcontractors</p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+  
+              <p class="text-muted"> Please enter your login and password!</p>
+              <input type="text" name="" placeholder="Username" class="form-control" id="inputUserName">
+              <input type="password" name="" placeholder="Password" id="inputPassword">
+              <div class="invalid-feedback" id="invalid-feedback">Login fails, Try again please?</div>
+              <a class="forgot text-muted">Forgot password?</a>
+              <input type="submit" name="" value="Login" (click)="checkLoginType()" [routerLinkActive]="['link-active']" [routerLink]="[link]">
+  
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
