@@ -43,6 +43,8 @@
 
 .cardHome table {
   table-layout: auto;
+  width: 100%;
+  text-align: center;
 }
 
 .example-card {

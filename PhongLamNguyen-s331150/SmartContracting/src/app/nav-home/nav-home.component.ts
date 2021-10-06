@@ -42,4 +42,14 @@ export class NavHomeComponent implements OnInit {
     this.router.navigate(['/account'], navigationExtras);
   }
 
+  navTimeSheet(): void {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "user": this.user
+      }
+    };
+
+    this.router.navigate(['/timesheet'], navigationExtras);
+  }
+
 }

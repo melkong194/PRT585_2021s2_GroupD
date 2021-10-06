@@ -31,6 +31,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import { AccountPageComponent } from './account-page/account-page.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
+import { SchedulerModule } from '@progress/kendo-angular-scheduler';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,7 @@ import {MatSelectModule} from '@angular/material/select';
       { path: 'home', component: HomePageComponent},
       { path: 'mbhome', component: MbHomePageComponent},
       { path: 'account', component: AccountPageComponent},
+      { path: 'timesheet', component: TimeSheetComponent},
     ]),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAkNi7U2_6ZqRDlun0DcHcXI6yiJg8oVrg'
@@ -72,7 +76,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatChipsModule,
     MatMenuModule,
     MatTabsModule,
-    MatSelectModule
+    MatSelectModule,
+    SchedulerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

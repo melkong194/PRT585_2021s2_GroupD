@@ -32,7 +32,7 @@
 
         <ng-container matColumnDef="hours">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Hours </th>
-          <td mat-cell *matCellDef="let row"> {{row.totalHour}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.hour}} </td>
         </ng-container>
 
         <ng-container matColumnDef="report">
@@ -61,20 +61,30 @@
         </mat-card-header>
         
         <mat-card-content>
-          <table>
-            <mat-divider></mat-divider>
-            <tr>
-              <th>07:00 <br> 20/09/2021</th>
-              <th class="arrowTable"><i class="fa fa-arrow-right"></i></th>
-              <th>Employee 1 <br> <button mat-flat-button color="primary">Clock In</button> </th>
-            </tr>
-            <mat-divider></mat-divider>
-            <tr>
-              <th>07:00 <br> 20/09/2021</th>
-              <th><i class="fa fa-arrow-right"></i></th>
-              <th>Employee 1 <br> <button mat-flat-button color="primary">Clock In</button> </th>
-            </tr>
+
+          <table mat-table [dataSource]="actSource">
+
+            <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+              <td mat-cell *matCellDef="let row"> {{ row.time }} <br> {{ row.date }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="arrow">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+              <td mat-cell *matCellDef="let row"> <i class="fa fa-arrow-right"></i> </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="desc">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+              <td mat-cell *matCellDef="let row"> {{ row.user_name }} <br> 
+                <button mat-flat-button color="primary"> {{ row.desc }} </button> </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="actColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: actColumns;"></tr>
+
           </table>
+
         </mat-card-content>
       </mat-card>
     </div>

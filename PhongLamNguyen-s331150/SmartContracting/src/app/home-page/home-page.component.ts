@@ -2,22 +2,25 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { ActAPIService } from '../services/act-api.service';
+import { UserAPIService } from '../services/user-api.service';
 
 export interface UserData {
   name: string,
   role: string,
   status: string,
-  totalHour: string,
+  hour: string,
   report: string
 }
 
-const FRUITS: string[] = [
-  'blueberry', 'lychee', 'kiwi', 'mango', 'peach', 'lime', 'pomegranate', 'pineapple'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
+export interface ActData {
+  act_id: number,
+  date: string,
+  desc: string,
+  time: string,
+  user_id: number,
+  user_name: string
+}
 
 @Component({
   selector: 'app-home-page',
@@ -27,39 +30,27 @@ const NAMES: string[] = [
 export class HomePageComponent implements AfterViewInit  {
 
   displayedColumns: string[] = ['name', 'role', 'status', 'hours', 'report'];
-  dataSource: MatTableDataSource<UserData>;
+  dataSource!: MatTableDataSource<UserData>;
+
+  actColumns: string[] = ['time', 'arrow', 'desc']
+  actSource!: MatTableDataSource<ActData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-    // Create 100 users
-    const users = [
-      {
-        name: "employee 1",
-        role: "12",
-        status: "aa",
-        totalHour: "10",
-        report: ""
-      },
-      {
-        name: "a",
-        role: "12",
-        status: "aa",
-        totalHour: "10",
-        report: ""
-      },
-      {
-        name: "a",
-        role: "12",
-        status: "aa",
-        totalHour: "10",
-        report: ""
-      }
-    ];
+  constructor(
+    private actAPI: ActAPIService,
+    private userData: UserAPIService
+  ) {
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    this.userData.GetAllUsers().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(Object(data)["result_set"]);
+    });
+
+    this.actAPI.GetAllAct().subscribe((data) => {
+      this.actSource = new MatTableDataSource(Object(data)["result_set"]);
+    });
+
   }
 
   ngAfterViewInit() {
