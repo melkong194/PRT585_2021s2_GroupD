@@ -37,7 +37,7 @@ namespace LOGIC.Services.Implementation
                 });
 
                 //SET SUCCESSFUL RESULT VALUES
-                result.userMessage = string.Format("All Unit Units obtained successfully");
+                result.userMessage = string.Format("obtained successfully");
                 result.internalMessage = "LOGIC.Services.Implementation.Unit_Service: GetAllUnits() method executed successfully.";
                 result.success = true;
             }
