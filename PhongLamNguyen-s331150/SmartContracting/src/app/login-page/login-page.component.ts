@@ -38,8 +38,17 @@ export class LoginPageComponent implements OnInit {
             };
 
             this.router.navigate(['/home'], navigationExtras);
-          } else if (toggle.checked) {
-            // this.router.navigate(['/mbhome']);
+          } else if (toggle.checked && Object(data)["result_set"][_i].role == "employee") {
+            let navigationExtras: NavigationExtras = {
+              queryParams: {
+                  "user": Object(data)["result_set"][_i].name,
+                  "id": Object(data)["result_set"][_i].user_id
+              }
+            };
+
+            this.router.navigate(['/mbhome'], navigationExtras);
+          } else {
+            invalidFeedback.style.display = "block";
           }
         } else {
           invalidFeedback.style.display = "block";
