@@ -4,6 +4,11 @@
 - Kieu QT Nguyen - s339142
 - Daljeet Singh - s332310
 
+## Set Up
+
+- Capital SQL Express name when connecting to SQL Server: \SQLEXPRESS
+- Create database in SQL Server Studio named: dalib
+
 ## Git Content:
 
 | Week | Member | Content |
