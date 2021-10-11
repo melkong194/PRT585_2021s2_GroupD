@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoList.Api.Enums;
+using TodoList.Models.Enums;
 
 namespace TodoList.Api.Entities
 {

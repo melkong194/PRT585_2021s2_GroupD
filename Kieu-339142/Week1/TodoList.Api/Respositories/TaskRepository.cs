@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TodoList.Api.Data;
 using Task = TodoList.Api.Entities.Task;
 using Microsoft.EntityFrameworkCore;
-
+using TodoList.Models;
 
 namespace TodoList.Api.Respositories
 {
@@ -20,7 +20,16 @@ namespace TodoList.Api.Respositories
 
         public async Task<IEnumerable<Task>> GetTaskList()
         {
-            return await _context.Tasks.ToListAsync();
+            //return await _context.Tasks.Include(x => x.Assignee).Select(x=> new TaskDto {
+            //    Status = x.Status,
+            //    Name = x.Name,
+            //    AssigneeId = x.AssigneeId,
+            //    CreatedDate = x.CreatedDate,
+            //    Id= x.Id,
+            //    AssigneeName = x.Assignee.FirstName + ' ' + x.Assignee.LastName
+            //}).ToListAsync();
+            return await _context.Tasks.Include(x => x.Assignee).ToListAsync();
+
         }
 
         public async Task<Task> Create(Task task)

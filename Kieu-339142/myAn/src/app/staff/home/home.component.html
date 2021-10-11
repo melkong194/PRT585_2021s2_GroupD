@@ -1,0 +1,30 @@
+<div class="gMap">
+    <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+</div>
+<div class="controls">
+    <div class="toggleOpt">
+        <mat-button-toggle-group>
+            <mat-button-toggle value="1">Clock out</mat-button-toggle>
+            <mat-button-toggle value="2" class="lastBtn">Clock in</mat-button-toggle>
+            <mat-button-toggle value="3" class="lastBtn">Break</mat-button-toggle>
+          </mat-button-toggle-group>
+    </div>
+    
+
+    <!-- <a class="fixedBtn btnCir start">
+        <span class="timeIn">Time In</span>
+    </a>
+    <a class="fixedBtn btnCir break">
+        <span class="breakTitle">Break</span>
+    </a> -->
+
+    <div class="btnRow">
+        <button routerLink="/record" type="button" class="btn btn-primary btn-sm">Records</button>
+        <button routerLink="/schedule" type="button" class="btn btn-danger btn-sm">Schedule</button>
+    </div>
+</div>
+
+
+

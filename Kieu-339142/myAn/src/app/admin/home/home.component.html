@@ -1,0 +1,28 @@
+<div class="container rounded bg-white">
+    <div class="row">
+        <div class="col-md-2 border-right d-m-none m-0 p-0 pr-2">
+
+            <div class="input-group mt-4 mb-2 ml-0">
+                <input type="text" class="form-control" placeholder="Place staff name">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+                </div>
+            </div>
+            <ul class="ul-staff-list">
+                <li><i class="fas fa-wifi text-success"></i> &nbsp; Staff 1</li>
+                <li><i class="fas fa-wifi text-success"></i> &nbsp; Staff 2</li>
+                <li><i class="fas fa-wifi text-success"></i> &nbsp; Staff 3</li>
+                <li><i class="far fa-bell-slash"></i> &nbsp; Staff 4</li>
+                <li><i class="far fa-bell-slash"></i> &nbsp; Staff 5</li>
+                <li><i class="far fa-bell-slash"></i> &nbsp; Staff 6</li>
+            </ul>
+        </div>
+
+        <div class="col-md-10 gMap m-0 p-0">
+            <agm-map [latitude]="lat" [longitude]="lng">
+                <agm-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng"></agm-marker>
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+        </div>
+    </div>
+</div>

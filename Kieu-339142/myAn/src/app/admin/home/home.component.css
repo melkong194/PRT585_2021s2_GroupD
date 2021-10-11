@@ -1,0 +1,64 @@
+agm-map {
+    height: 600px;
+}
+
+.gMap{
+    width: 100%;
+    height: 100%;
+}
+
+.ul-staff-list li{
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    color:  #193841;
+    font-weight: 400;
+    font-size: 15px;
+    padding-top: 7px;
+}
+
+.row{
+    margin-left: -35px;
+}
+/* HEADER */
+
+.bg-dark{
+	background-color: #193841!important;
+}
+.nav-item{
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.navbar{
+	padding: 0 50px;
+    color: #fff;
+    margin-bottom: 0 !important;
+}
+.btn-menu .btn:focus{
+	box-shadow: none;
+}
+
+
+.mk-dropdown-menu{
+	width: 100%;
+}
+
+.headerWrapper{
+    border-bottom: 1px solid #eee ;
+    opacity: 1;
+    display: block;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 0 3px;
+}
+
+#iTitle{
+    text-align: center;
+    font-family: "Arial","Papyrus","Lucida Handwriting","Brush Script MT" ;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.4px;
+    max-width: 300px;
+}

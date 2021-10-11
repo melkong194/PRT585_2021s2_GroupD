@@ -1,0 +1,50 @@
+<div id="page-login">
+    <div class="card login-card-container">
+        
+        <div class="login">
+            <h1>Login</h1>
+              <form method="post" name="formLogin" #f="ngForm" novalidate>
+                  
+           
+                    <mat-button-toggle-group id="role" #group="matButtonToggleGroup" [value]="role" (change)="roleChoose(group.value)">
+                      <mat-button-toggle value="staff">Staff</mat-button-toggle>
+                      <mat-button-toggle class="lastBtn" value="admin">Admin</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+
+
+
+                     
+                <input type="text" name="u"  placeholder="Username" required="required"  id="inputUserName" />
+                <input type="password" name="p" placeholder="Password" required="required" id="inputPassword" />
+
+                <button type="submit" class="btn btn-primary btn-block btn-large" (click)="login()" [routerLink]="[link]">Login</button>
+
+                <div class="social"> 
+                    <div class="go" routerLink="/staff/home">Google</div>
+                    <div class="fb" routerLink="/admin/home">Facebook</div>
+                </div>
+              </form>
+        </div>
+
+        <!-- <img class="profile-image-card" alt="" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <form id="form-signup" class="form-login">
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email Address" />
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" />
+            </div>
+            <button class="btn btn-lg btn-primary btn-block btn-login" type="submit">
+                Log in</button>
+        </form> 
+        <a href="logup.html" class="link-login">Forgot password</a>
+        <a href="logup.html" class="link-login">Sign up here</a> -->
+
+    </div>
+
+    
+
+   
+</div>
+

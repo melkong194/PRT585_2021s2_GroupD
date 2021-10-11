@@ -1,6 +1,45 @@
 ﻿@page "/todoList"
+@using TodoListServer.Components
 
 <h3>To-do List of @name</h3>
+
+@if(Tasks == null)
+    {
+        <LoadingComp></LoadingComp>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Priority</th>
+                    <th>Assignee</th>
+                    <th>Created</th>
+                    <th>Status</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Tasks)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Priority</td>
+                        <td>@item.Assignee</td>
+                        <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <a href="/taskDetails/@item.Id">Detail</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+
+
 
 @code {
     string name = "Melko";

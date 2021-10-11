@@ -1,0 +1,61 @@
+.bg-dark{
+	background-color: #012b38!important;
+}
+.nav-item{
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+    cursor: pointer;
+}
+
+.navbar{
+	padding: 0 50px;
+    color: #fff;
+    margin-bottom: 0 !important;
+}
+
+.btn-menu .btn:focus{
+	box-shadow: none;
+}
+
+
+.mk-dropdown-menu{
+	width: 100%;
+}
+
+.headerWrapper{
+    border-bottom: 1px solid #eee ;
+    opacity: 1;
+    display: block;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 0 3px;
+}
+
+#iTitle{
+    text-align: center;
+    font-family: "Arial","Papyrus","Lucida Handwriting","Brush Script MT" ;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.4px;
+    max-width: 300px;
+}
+
+.nav-link,
+.btn-menu a{
+    color: #fff;
+}
+
+.nav-link:hover,
+#iTitle:hover,
+.btn-menu a:hover
+{
+    color: rgb(235, 182, 8);
+}
+
+@media only screen and (max-width: 992px) {
+    .navbar{
+        padding-top: 15px;
+    }
+  }

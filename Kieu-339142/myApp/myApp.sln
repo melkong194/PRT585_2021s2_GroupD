@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{5848871A-8E06-4617-97C4-FDBEC09E58A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app.API", "app.API", "{DFA3D722-22BF-452F-8969-B8D82C14F36C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app.Client", "app.Client", "{4EEC3DFB-9793-4955-980D-7CF8DFD9DF23}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DFA3D722-22BF-452F-8969-B8D82C14F36C} = {5848871A-8E06-4617-97C4-FDBEC09E58A9}
+		{4EEC3DFB-9793-4955-980D-7CF8DFD9DF23} = {5848871A-8E06-4617-97C4-FDBEC09E58A9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6EE15E25-3099-42DF-9C76-DACBD397C6C5}
+	EndGlobalSection
+EndGlobal
