@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Elmah.Io.WebApi" Version="4.0.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.design" Version="5.0.9">
       <PrivateAssets>all</PrivateAssets>

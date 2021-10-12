@@ -47,10 +47,10 @@ export class MbHomePageComponent implements OnInit {
     var clock: string;
 
     if(this.state){
-      this.state = false;
+      this.state = !this.state;
       clock = "Clock Out";
     } else {
-      this.state = true;
+      this.state = !this.state;
       clock = "Clock In";
     }
 

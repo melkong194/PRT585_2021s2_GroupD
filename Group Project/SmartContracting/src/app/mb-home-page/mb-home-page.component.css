@@ -63,7 +63,7 @@ width: 240px;
 border-radius: 50%;
 z-index: 1;
 background: #222222;
-opacity: 0.7;
+opacity: 0.3;
 }
 
 .clockbuttonShadow2 {
@@ -78,7 +78,7 @@ width: 220px;
 border-radius: 50%;
 z-index: 1;
 background: #222222;
-opacity: 0.3;
+opacity: 0.5;
 }
 
 .fa-clock-o {
@@ -119,3 +119,10 @@ font-size: 20px;
 font-weight: bolder;
 }
 
+.colorGreen{
+    color: rgb(70, 216, 2);
+}
+
+.bgRed{
+    background: rgb(94, 2, 2);
+}

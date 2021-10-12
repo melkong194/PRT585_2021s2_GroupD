@@ -34,7 +34,11 @@
               "src/styles.css",
               "./node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": []
+            "scripts": [
+                "node_modules/elmah.io.javascript/dist/elmahio.min.js",
+                "src/assets/js/elmahio.js",
+                "src/assets/js/elmahio.min.js"
+            ]
           },
           "configurations": {
             "production": {

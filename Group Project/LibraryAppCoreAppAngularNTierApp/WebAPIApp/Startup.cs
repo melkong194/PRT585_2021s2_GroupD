@@ -1,4 +1,5 @@
 //using LOGIC.Services.Implementation;
+using Elmah.Contrib.WebApi;
 using LOGIC.Services.Implementation;
 using LOGIC.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -14,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.ExceptionHandling;
 
 namespace WebAPIApp
 {
@@ -31,9 +33,17 @@ namespace WebAPIApp
         {
 
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIApp", Version = "v1" });
+            });
+
+            services.AddElmahIo(o =>
+            {
+                o.ApiKey = "87a03e9e26a74d6fa983f9de3a9c8776";
+                o.LogId = new Guid("bd8c1453-5792-461b-8021-5bcc8eb338df");
+
             });
 
             #region CUSTOM SERVICES [D-I]
@@ -77,7 +87,7 @@ namespace WebAPIApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -90,6 +100,8 @@ namespace WebAPIApp
 
             app.UseRouting();
             app.UseCors();
+            app.UseElmahIo();
+            loggerFactory.AddLog4Net();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
