@@ -4,8 +4,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ExceptionlessClient } from 'exceptionless';
 const defaultClient = ExceptionlessClient.default;
 const config = {
-  apiKey: "yDSlIwzKI5AUV2czExRcV71grIuED7dIyVLxshhH", 
-  serverUrl: "http://localhost:7000",
+  apiKey: "i31ihhJrceMh2z9yYNb9G2OQuSrYfJm77gY5Hu3B"
 };
 const client = new ExceptionlessClient(config);
 
