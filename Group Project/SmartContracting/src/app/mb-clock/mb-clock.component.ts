@@ -55,6 +55,9 @@ export class MbClockComponent implements OnInit {
             this.state = !this.state;
             clock = "Clock In";
             this.endTime = this.myTime;
+            console.log("end",this.endTime);
+            console.log(this.startTime);
+            console.log(this.calculateTime(this.startTime, this.endTime));
         }
 
         var data = "?desc=" + clock
@@ -75,9 +78,11 @@ export class MbClockComponent implements OnInit {
         if (this.break) {
             this.break = false;
             clock = "End Break";
+            this.startBreak = this.myTime;
         } else {
             this.break = true;
             clock = "Start Break";
+            this.endBreak = this.myTime;
         }
 
         var data = "?desc=" + clock
@@ -89,7 +94,16 @@ export class MbClockComponent implements OnInit {
         this.actData.CreateAct(data).subscribe((data) => {
             // console.log(data);
         });
+    }
 
+    calculateTime(time1: any, time2: any){
+        // return min
+        
+        var a1 = time1.split(":").map(Number);
+        var a2 = time2.split(":").map(Number);
+        console.log(a1);
+        console.log(a2);
+        return ((a2[0]-a1[0])*60) - (a2[1]-a1[1]);
     }
 
 }
