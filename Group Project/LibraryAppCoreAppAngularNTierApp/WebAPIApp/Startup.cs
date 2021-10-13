@@ -1,5 +1,7 @@
 //using LOGIC.Services.Implementation;
+using Elmah;
 using Elmah.Contrib.WebApi;
+using ElmahCore.Mvc;
 using LOGIC.Services.Implementation;
 using LOGIC.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -39,12 +41,16 @@ namespace WebAPIApp
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIApp", Version = "v1" });
             });
 
+            #region ELMAH & ELMAHIO
             services.AddElmahIo(o =>
             {
                 o.ApiKey = "87a03e9e26a74d6fa983f9de3a9c8776";
                 o.LogId = new Guid("bd8c1453-5792-461b-8021-5bcc8eb338df");
 
             });
+            services.AddElmah();
+
+            #endregion
 
             #region CUSTOM SERVICES [D-I]
 
@@ -101,6 +107,7 @@ namespace WebAPIApp
             app.UseRouting();
             app.UseCors();
             app.UseElmahIo();
+            app.UseElmah();
             loggerFactory.AddLog4Net();
             app.UseAuthorization();
 
@@ -110,4 +117,6 @@ namespace WebAPIApp
             });
         }
     }
+
+
 }

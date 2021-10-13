@@ -35,6 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MbTimesheetComponent } from './mb-timesheet/mb-timesheet.component';
 
 
 class ElmahIoErrorHandler implements ErrorHandler {
@@ -62,7 +63,8 @@ class ElmahIoErrorHandler implements ErrorHandler {
         MbHomePageComponent,
         NavHomeComponent,
         TimeSheetComponent,
-        AccountPageComponent
+        AccountPageComponent,
+        MbTimesheetComponent
     ],
     imports: [
         BrowserModule,
@@ -75,6 +77,7 @@ class ElmahIoErrorHandler implements ErrorHandler {
             { path: 'mbhome', component: MbHomePageComponent },
             { path: 'account', component: AccountPageComponent },
             { path: 'timesheet', component: TimeSheetComponent },
+            { path: 'mbtimesheet', component: MbTimesheetComponent },
         ]),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyAkNi7U2_6ZqRDlun0DcHcXI6yiJg8oVrg'

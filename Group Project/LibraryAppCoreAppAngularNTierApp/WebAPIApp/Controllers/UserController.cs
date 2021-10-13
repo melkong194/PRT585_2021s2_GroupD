@@ -1,10 +1,13 @@
-﻿using LOGIC.Services.Interfaces;
+﻿using ElmahCore;
+using LOGIC.Services.Interfaces;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using WEB_API.Models.User;

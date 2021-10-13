@@ -10,8 +10,9 @@
 
             <div fxShow="true" fxHide.lt-md>
 
-                <a mat-button>Avatar</a>
                 <a mat-button>Profile</a>
+                <a mat-button [routerLink]="['/mbtimesheet']">Timesheet</a>
+                <a mat-button [routerLink]="">Profile</a>
 
             </div>
 
@@ -24,8 +25,8 @@
                 <img src="https://material.angular.io/assets/img/examples/shiba1.jpg">
                 <p>{{ user }}</p>
                 <a mat-list-item>Profile</a>
-                <a mat-list-item>Timesheet</a>
-                <a href="#" mat-list-item>Logout</a>
+                <a mat-list-item [routerLink]="['/mbtimesheet']">Timesheet</a>
+                <a [routerLink]="" mat-list-item>Logout</a>
 
             </mat-nav-list>
         </mat-sidenav>
