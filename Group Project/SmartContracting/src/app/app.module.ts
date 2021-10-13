@@ -34,6 +34,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MbProfileComponent } from './mb-profile/mb-profile.component';
+import { MbTimesheetComponent } from './mb-timesheet/mb-timesheet.component';
+import { MbClockComponent } from './mb-clock/mb-clock.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MbHomePageComponent,
     NavHomeComponent,
     TimeSheetComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    MbProfileComponent,
+    MbTimesheetComponent,
+    MbClockComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,10 +59,12 @@ import { MatNativeDateModule } from '@angular/material/core';
     RouterModule.forRoot([
       { path: '', component: LoginPageComponent, pathMatch: 'full' },
       { path: 'home', component: HomePageComponent},
-      { path: 'mbhome', component: MbHomePageComponent},
       { path: 'account', component: AccountPageComponent},
       { path: 'timesheet', component: TimeSheetComponent},
+      { path: 'mbhome', component: MbHomePageComponent},
+
     ]),
+    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAkNi7U2_6ZqRDlun0DcHcXI6yiJg8oVrg'
     }),
