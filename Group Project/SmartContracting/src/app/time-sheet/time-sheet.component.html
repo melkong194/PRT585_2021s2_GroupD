@@ -6,9 +6,17 @@
     <kendo-scheduler
       [kendoSchedulerBinding]="eventList"
       [selectedDate]="selectedDate"
-      scrollTime="08:00"
       style="height: 600px;"
     >
+
+      <ng-template kendoSchedulerToolbarTemplate>
+        <button kendoSchedulerPDFCommand>Export PDF</button>
+        <div kendoSchedulerToolbarNavigation></div>
+        <span class="k-spacer"></span>
+        <div kendoSchedulerToolbarViewSelector></div>
+      </ng-template>
+      <kendo-scheduler-pdf fileName="scheduler.pdf"> </kendo-scheduler-pdf>
+
       <kendo-scheduler-day-view> </kendo-scheduler-day-view>
 
       <kendo-scheduler-week-view> </kendo-scheduler-week-view>

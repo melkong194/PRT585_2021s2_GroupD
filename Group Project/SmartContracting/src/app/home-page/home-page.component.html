@@ -95,23 +95,25 @@
           <mat-card-title>Map Tracker</mat-card-title>
 
           <div class="searchMap">
+
             <mat-form-field appearance="standard">
               <mat-label>Search</mat-label>
               <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
             </mat-form-field>
+
             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
               <mat-icon>people</mat-icon>
             </button>
+            
             <mat-menu #menu="matMenu">
-              <button mat-menu-item class="listDrop">
-                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg">
-                <a>Employee 1</a>
-              </button>
-              <button mat-menu-item class="listDrop">
-                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg">
-                <a>Employee 2</a>
-              </button>
+              <span *ngFor="let user of mapUsers">
+                <button mat-menu-item class="listDrop" >
+                  <img [src]="user.image">
+                  <a>{{ user.name }}</a>
+                </button>
+              </span>
               
+
             </mat-menu>
           </div>
         </mat-card-header>

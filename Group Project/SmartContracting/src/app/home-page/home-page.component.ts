@@ -38,6 +38,20 @@ export class HomePageComponent implements AfterViewInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+
+  mapUsers: any[] = [
+    {
+      image : "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      name : "AA"
+    },
+    {
+      image : "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      name : "BB"
+    },
+
+  ];
+
+
   constructor(
     private actAPI: ActAPIService,
     private userData: UserAPIService
