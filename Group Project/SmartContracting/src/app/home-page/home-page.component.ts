@@ -1,11 +1,16 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 import { ActAPIService } from '../services/act-api.service';
 import { UserAPIService } from '../services/user-api.service';
 
 export interface UserData {
+  user_id: number,
   name: string,
   role: string,
   status: string,
@@ -22,6 +27,11 @@ export interface ActData {
   user_name: string
 }
 
+export interface User {
+  name: string,
+  id: number
+}
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -29,7 +39,7 @@ export interface ActData {
 })
 export class HomePageComponent implements AfterViewInit  {
 
-  displayedColumns: string[] = ['name', 'role', 'status', 'hours', 'report'];
+  displayedColumns: string[] = ['name', 'userID','role', 'status', 'hours', 'report'];
   dataSource!: MatTableDataSource<UserData>;
 
   actColumns: string[] = ['time', 'arrow', 'desc']
@@ -38,23 +48,17 @@ export class HomePageComponent implements AfterViewInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  user!: string;
 
-  mapUsers: any[] = [
-    {
-      image : "https://material.angular.io/assets/img/examples/shiba1.jpg",
-      name : "AA"
-    },
-    {
-      image : "https://material.angular.io/assets/img/examples/shiba1.jpg",
-      name : "BB"
-    },
 
-  ];
+  mapUsers: any[] = [];
 
 
   constructor(
     private actAPI: ActAPIService,
-    private userData: UserAPIService
+    private userData: UserAPIService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
 
     this.actAPI.GetAllAct().subscribe((data) => {
@@ -69,7 +73,40 @@ export class HomePageComponent implements AfterViewInit  {
       this.dataSource = new MatTableDataSource(Object(data)["result_set"]);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
+
+      for(var _i = 0; _i < Object(data)["result_set"].length; _i++) {
+        if(Object(data)["result_set"][_i].status == "working" || Object(data)["result_set"][_i].status == "breaking") {
+          var temp = {
+            image : "https://material.angular.io/assets/img/examples/shiba1.jpg",
+            name : Object(data)["result_set"][_i].name,
+            id: Object(data)["result_set"][_i].user_id
+          }
+          this.mapUsers.push(temp);
+
+          var tempAuto = {
+            name: Object(data)["result_set"][_i].name,
+            id: Object(data)["result_set"][_i].user_id
+          }
+          this.options.push(tempAuto);
+        }
+      }
+
+      //Map autocomplete
+      this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => typeof value === 'string' ? value : value.name),
+        map(name => name ? this._filter(name) : this.options.slice())
+      );
+
     });
+
+    this.route.queryParams.subscribe(params => {
+      this.user = params.user;
+    });
+
+    
     
   }
 
@@ -97,6 +134,38 @@ export class HomePageComponent implements AfterViewInit  {
     }
   }
 
-  
+
+  navProfile(user_id: number, name: string) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "user": this.user,
+          "user_id": user_id,
+          "name": name
+      }
+    };
+
+    this.router.navigate(['/userProfile'], navigationExtras);
+  }
+
+
+  //Map autocomplete
+  myControl = new FormControl();
+  options: User[] = [];
+  filteredOptions!: Observable<User[]>;
+
+  displayFn(user: User): string {
+    return user && user.name ? user.name : '';
+  }
+
+  private _filter(name: string): User[] {
+    const filterValue = name.toLowerCase();
+
+    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
+
+
+  mapSearch(id: number, name: string) {
+    console.log(name);
+  }
 }
 

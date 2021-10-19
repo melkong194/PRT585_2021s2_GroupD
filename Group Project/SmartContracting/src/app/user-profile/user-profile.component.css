@@ -1,0 +1,28 @@
+.example-card {
+    display: none;
+  }
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+  transform: scale(5);
+  margin: 15% 0 0 15%;
+}
+
+.profile {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5% 0 0 15%;
+  
+}
+
+.info mat-form-field {
+  width: 200%;
+}

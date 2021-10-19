@@ -1,0 +1,52 @@
+<app-nav-home></app-nav-home>
+
+<mat-card class="example-card"> </mat-card>
+
+<div class="profile">
+    <div mat-card-avatar class="example-header-image"></div> 
+
+
+    <div class="info">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Staff ID</mat-label>
+            <input matInput id="id" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput id="name" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Account</mat-label>
+            <input matInput id="account" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" id="password" readonly>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <input matInput id="role" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Current Status</mat-label>
+            <input matInput id="status" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Total Hours</mat-label>
+            <input matInput id="hours" readonly>
+        </mat-form-field>
+          
+
+    </div>
+
+</div>
