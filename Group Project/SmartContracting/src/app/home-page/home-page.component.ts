@@ -43,19 +43,20 @@ export class HomePageComponent implements AfterViewInit  {
     private userData: UserAPIService
   ) {
 
-    this.userData.GetAllUsers().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(Object(data)["result_set"]);
-    });
-
     this.actAPI.GetAllAct().subscribe((data) => {
-      this.actSource = new MatTableDataSource(Object(data)["result_set"]);
+      this.actSource = new MatTableDataSource(Object(data)["result_set"].reverse().slice(0,10));
     });
 
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+
+    this.userData.GetAllUsers().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(Object(data)["result_set"]);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+    
   }
 
   applyFilter(event: Event) {

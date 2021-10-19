@@ -62,7 +62,7 @@ import { MbClockComponent } from './mb-clock/mb-clock.component';
       { path: 'account', component: AccountPageComponent},
       { path: 'timesheet', component: TimeSheetComponent},
       { path: 'mbhome', component: MbHomePageComponent},
-
+      { path: 'mbprofile', component: MbProfileComponent},
     ]),
     
     AgmCoreModule.forRoot({
