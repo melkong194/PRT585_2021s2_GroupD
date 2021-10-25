@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 export class EventAPIService {
 
   createUrlAPI = "https://localhost:5001/api/Event/AddEvent";
-  getAllUrlAPI = "https://localhost:5001/api/Event/GetAllEvents"
+  getAllUrlAPI = "https://localhost:5001/api/Event/GetAllEvents";
+  updateUrlAPI = "https://localhost:5001/api/Event/UpdateEvent";
 
   constructor(private http:HttpClient) { }
 
@@ -18,6 +19,10 @@ export class EventAPIService {
 
   GetAllEvents() {
     return this.http.get(this.getAllUrlAPI);
+  }
+
+  UpdateEvent(data: any) {
+    return this.http.post(this.updateUrlAPI, data);
   }
 
 }

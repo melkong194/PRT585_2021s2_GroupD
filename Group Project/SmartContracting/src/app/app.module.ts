@@ -37,6 +37,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MbProfileComponent } from './mb-profile/mb-profile.component';
 import { MbTimesheetComponent } from './mb-timesheet/mb-timesheet.component';
 import { MbClockComponent } from './mb-clock/mb-clock.component';
+import { ActPageComponent } from './act-page/act-page.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { PDFModule } from "@progress/kendo-angular-scheduler";
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 @NgModule({
   declarations: [
@@ -50,6 +56,8 @@ import { MbClockComponent } from './mb-clock/mb-clock.component';
     MbProfileComponent,
     MbTimesheetComponent,
     MbClockComponent,
+    ActPageComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,9 @@ import { MbClockComponent } from './mb-clock/mb-clock.component';
       { path: 'account', component: AccountPageComponent},
       { path: 'timesheet', component: TimeSheetComponent},
       { path: 'mbhome', component: MbHomePageComponent},
-
+      { path: 'mbprofile', component: MbProfileComponent},
+      { path: 'act', component: ActPageComponent},
+      { path: 'userProfile', component: UserProfileComponent},
     ]),
     
     AgmCoreModule.forRoot({
@@ -87,7 +97,10 @@ import { MbClockComponent } from './mb-clock/mb-clock.component';
     MatSelectModule,
     SchedulerModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    PDFExportModule,
+    PDFModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,31 @@
+.tableHome table {
+  width: 100%;
+}
+
+.tableHome .mat-form-field {
+font-size: 15px;
+width: 15%;
+margin-left: 5%;
+}
+
+.tableHome .mat-elevation-z8 {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.tableName {
+  display: flex;
+}
+
+.nameText {
+  margin: 3% 0 0 3%;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.example-card {
+  display: none;
+}

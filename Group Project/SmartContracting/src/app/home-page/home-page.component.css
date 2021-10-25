@@ -14,7 +14,7 @@
 }
 
 .tableHome td, th {
-  width: 25%;
+  width: 20%;
 }
 
 .tableHome .mat-elevation-z8 {
@@ -52,7 +52,7 @@
 }
 
 .actLogHome {
-  width: 23%;
+  width: 27%;
 }
 
 .mapHome {
@@ -66,13 +66,15 @@
 }
 
 .mapHome .searchMap {
-  margin: -2% -20% 0 0;
+  margin: -4% -19% 0 0;
   width: 50%;
 }
 
 .searchMap mat-form-field {
   width: 50%;
   margin-right: 3%;
+  margin-top: 7%;
+  margin-bottom: -2%;
 }
 
 .listDrop {

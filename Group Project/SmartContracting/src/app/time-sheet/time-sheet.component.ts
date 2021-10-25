@@ -9,6 +9,11 @@ interface User {
   viewValue: string;
 }
 
+interface Event {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-time-sheet',
   templateUrl: './time-sheet.component.html',
@@ -17,18 +22,20 @@ interface User {
 export class TimeSheetComponent implements OnInit {
 
   private dataUser: any;
+  private dataEvent: any;
+
   selectedUser!: string;
+  selectedEvent!: string;
+
+  private eventSelectedUserID!: any;
+
   users: User[] = [];
+  events: Event[] = [];
 
   roleControl = new FormControl('', Validators.required);
 
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
-  });
-
   public selectedDate!: Date;
-  public events!: SchedulerEvent[];
+  public eventList!: SchedulerEvent[];
 
   constructor(
     private userData: UserAPIService,
@@ -48,6 +55,19 @@ export class TimeSheetComponent implements OnInit {
       }
     });
 
+    this.events = [];
+    this.eventData.GetAllEvents().subscribe((data) => {
+      this.dataEvent =  Object(data)["result_set"];
+      for(var _i = 0; _i < Object(data)["result_set"].length; _i++) {
+        var temp = {
+          value: Object(data)["result_set"][_i].event_id,
+          viewValue: Object(data)["result_set"][_i].event_id + ": " + Object(data)["result_set"][_i].title
+            + " - " + Object(data)["result_set"][_i].user_name
+        }
+        this.events.push(temp);
+      }
+    });
+
     const currentYear = new Date().getFullYear();
 
     const parseAdjust = (eventDate: string): Date => {
@@ -60,7 +80,7 @@ export class TimeSheetComponent implements OnInit {
 
     this.eventData.GetAllEvents().subscribe((data) => {
       
-      this.events = Object(data)["result_set"].map((dataItem: { user_name: string, start: string; end: string; title: string; recurrence_rule: any; RoomID: any; user_id: any; }) => (
+      this.eventList = Object(data)["result_set"].map((dataItem: { user_name: string, start: string; end: string; title: string; recurrence_rule: any; RoomID: any; user_id: any; }) => (
         <SchedulerEvent> {
           start: parseAdjust(dataItem.start),
           end: parseAdjust(dataItem.end),
@@ -86,12 +106,36 @@ export class TimeSheetComponent implements OnInit {
     }
   }
 
+  selectEvent() {
+    var inputName = <HTMLInputElement>document.getElementById("nameUpdate");
+    var inputTitle = <HTMLInputElement>document.getElementById("titleUpdate");
+    var inputStart = <HTMLInputElement>document.getElementById("startUpdate");
+    var inputEnd = <HTMLInputElement>document.getElementById("endUpdate");
+    var inputDate = <HTMLInputElement>document.getElementById("datePickUpdate");
+
+    for(var _i = 0; _i < this.dataEvent.length; _i++) {
+      if(this.dataEvent[_i].event_id == this.selectedEvent) {
+        inputName.value = this.dataEvent[_i].user_name;
+        inputTitle.value = this.dataEvent[_i].title;
+        inputStart.value = this.dataEvent[_i].start.split(" ")[1];
+        inputEnd.value = this.dataEvent[_i].end.split(" ")[1];
+        inputDate.value = this.dataEvent[_i].start.split(" ")[0];
+
+        this.eventSelectedUserID = this.dataEvent[_i].user_id;
+        
+        return;
+      }
+    }
+
+  }
+
   
   createEvent() {
     var inputName = <HTMLInputElement>document.getElementById("name");
     var inputTitle = <HTMLInputElement>document.getElementById("title");
     var inputStart = <HTMLInputElement>document.getElementById("start");
     var inputEnd = <HTMLInputElement>document.getElementById("end");
+    var inputDate = <HTMLInputElement>document.getElementById("datePickCreate");
     var invalidFeedback = <HTMLInputElement>document.getElementById("invalid-feedback");
     var validFeedback = <HTMLInputElement>document.getElementById("valid-feedback");
     var data: string;
@@ -100,22 +144,58 @@ export class TimeSheetComponent implements OnInit {
       data = "?user_id=" + this.selectedUser 
       + "&user_name=" + inputName.value
       + "&title=" + inputTitle.value
-      + "&start=" + this.range.value.start.toDateString() + " " + inputStart.value
-      + "&end=" + this.range.value.end.toDateString() + " " + inputEnd.value
+      + "&start=" + inputDate.value + " " + inputStart.value
+      + "&end=" + inputDate.value + " " + inputEnd.value
 
       this.eventData.CreateEvent(data).subscribe((data) => {
         if(Object(data)["success"]){
           validFeedback.style.display = "block";
           invalidFeedback.style.display = "none";
 
-
           this.ngOnInit();
           this.noneRefresh();
+          this.refreshFields(inputName, inputTitle, inputStart, inputEnd, inputDate);
         }
       });
     } else {
       invalidFeedback.style.display = "block";
     }
+  }
+
+  updateEvent() {
+    var inputName = <HTMLInputElement>document.getElementById("nameUpdate");
+    var inputTitle = <HTMLInputElement>document.getElementById("titleUpdate");
+    var inputStart = <HTMLInputElement>document.getElementById("startUpdate");
+    var inputEnd = <HTMLInputElement>document.getElementById("endUpdate");
+    var inputDate = <HTMLInputElement>document.getElementById("datePickUpdate");
+    var invalidFeedback = <HTMLInputElement>document.getElementById("invalid-feedback");
+    var validFeedback = <HTMLInputElement>document.getElementById("valid-feedback");
+    var data: any;
+
+    if(this.selectedEvent != undefined && inputName.value != "" && inputTitle.value != "" && inputStart.value != "" && inputEnd.value != "") {
+      data = {
+        "id": this.selectedEvent,
+        "user_id": this.eventSelectedUserID,
+        "user_name": inputName.value,
+        "title": inputTitle.value,
+        "start": inputDate.value + " " + inputStart.value,
+        "end": inputDate.value + " " + inputEnd.value
+      };
+
+      this.eventData.UpdateEvent(data).subscribe((data) => {
+        if(Object(data)["success"]){
+          validFeedback.style.display = "block";
+          invalidFeedback.style.display = "none";
+
+          this.ngOnInit();
+          this.noneRefreshEvent();
+          this.refreshFields(inputName, inputTitle, inputStart, inputEnd, inputDate);
+        }
+      });
+    } else {
+      invalidFeedback.style.display = "block";
+    }
+
   }
 
   noneRefresh() {
@@ -130,11 +210,26 @@ export class TimeSheetComponent implements OnInit {
     inputEnd.value = "";
   }
 
-  refreshFields(inputName: HTMLInputElement, inputTitle: HTMLInputElement, inputStart: HTMLInputElement, inputEnd: HTMLInputElement) {
+  noneRefreshEvent() {
+    var inputName = <HTMLInputElement>document.getElementById("nameUpdate");
+    var inputTitle = <HTMLInputElement>document.getElementById("titleUpdate");
+    var inputStart = <HTMLInputElement>document.getElementById("startUpdate");
+    var inputEnd = <HTMLInputElement>document.getElementById("endUpdate");
+    var inputDate = <HTMLInputElement>document.getElementById("datePickUpdate");
+
     inputName.value = "";
     inputTitle.value = "";
     inputStart.value = "";
     inputEnd.value = "";
+    inputDate.value = "";
+  }
+
+  refreshFields(inputName: HTMLInputElement, inputTitle: HTMLInputElement, inputStart: HTMLInputElement, inputEnd: HTMLInputElement, inputDate: HTMLInputElement) {
+    inputName.value = "";
+    inputTitle.value = "";
+    inputStart.value = "";
+    inputEnd.value = "";
+    inputDate.value = "";
   }
 
 

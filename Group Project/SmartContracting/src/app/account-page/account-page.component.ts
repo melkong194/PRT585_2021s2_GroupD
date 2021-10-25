@@ -87,7 +87,8 @@ export class AccountPageComponent implements OnInit {
       data = "?name=" + inputName.value 
       + "&account=" + inputAccount.value 
       + "&password=" + inputPassword.value 
-      + "&role=" + this.selectedRole;
+      + "&role=" + this.selectedRole
+      + "&hour=0.0";
 
       this.userData.AddUser(data).subscribe((data) => {
         if(Object(data)["success"]){
