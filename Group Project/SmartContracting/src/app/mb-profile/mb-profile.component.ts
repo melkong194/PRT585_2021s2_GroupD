@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserAPIService } from '../services/user-api.service';
@@ -5,13 +6,23 @@ import { UserAPIService } from '../services/user-api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
+=======
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { UserAPIService } from '../services/user-api.service';
+
+>>>>>>> development/client_app
 
 @Component({
     selector: 'app-mb-profile',
     templateUrl: './mb-profile.component.html',
     styleUrls: ['./mb-profile.component.css']
 })
+<<<<<<< HEAD
 export class MbProfileComponent implements AfterViewInit  {
+=======
+export class MbProfileComponent implements OnInit {
+>>>>>>> development/client_app
     private dataUser: any;
     users: any;
 
@@ -32,6 +43,7 @@ export class MbProfileComponent implements AfterViewInit  {
 
     }
 
+<<<<<<< HEAD
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   
@@ -75,3 +87,6 @@ export interface PeriodicElement {
     {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
     {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
   ];
+=======
+}
+>>>>>>> development/client_app
