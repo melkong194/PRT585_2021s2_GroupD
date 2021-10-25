@@ -1,0 +1,23 @@
+.frame{
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+}
+
+mat-form-field{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.invalid-feedback {
+    display: none;
+    color: rgb(243, 52, 52);
+    padding-bottom: 2%;
+}
+
+.valid-feedback {
+    display: none;
+    color: rgb(41, 221, 50);
+    padding-bottom: 2%;
+}

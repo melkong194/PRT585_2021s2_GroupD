@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserAPIService } from '../services/user-api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -9,24 +10,70 @@ import { UserAPIService } from '../services/user-api.service';
     styleUrls: ['./mb-profile.component.css']
 })
 export class MbProfileComponent implements OnInit {
-    private dataUser: any;
-    users: any;
+    hide = true;
+    user!: string;
+    id!: string;
+    temp!: any;
 
-    constructor(private userData: UserAPIService) { }
+    constructor(
+        private userData: UserAPIService,
+        private route: ActivatedRoute,
+        private router: Router
+        ) { }
 
     ngOnInit(): void {
-        this.users = [];
+        this.route.queryParams.subscribe(params => {
+            this.user = params.user;
+            this.id = params.id;
+        });
+
         this.userData.GetAllUsers().subscribe((data) => {
-            this.dataUser = Object(data)["result_set"];
             for (var _i = 0; _i < Object(data)["result_set"].length; _i++) {
-                var temp = {
-                    value: Object(data)["result_set"][_i].user_id,
-                    viewValue: Object(data)["result_set"][_i].user_id + ": " + Object(data)["result_set"][_i].name
+                if (Object(data)["result_set"][_i].user_id == this.id) {
+                    this.temp = Object(data)["result_set"][_i];
                 }
-                this.users.push(temp);
             }
         });
 
+    }
+
+    updateAccount() {
+        var name = <HTMLInputElement>document.getElementById("name");
+        var acc = <HTMLInputElement>document.getElementById("account");
+        var pass = <HTMLInputElement>document.getElementById("password");
+        var invalidFeedback = <HTMLInputElement>document.getElementById("invalid-feedback");
+        var validFeedback = <HTMLInputElement>document.getElementById("valid-feedback");
+
+        if(name.value !==null && acc.value !==null && pass.value !==null){
+            let data = {
+                "id": this.id,
+                "status" : this.temp['status'],
+                "name": name.value,
+                "account": acc.value,
+                "password": pass.value,
+                "role": this.temp['role'],
+                "hour": this.temp['hour'],
+            };
+    
+            this.temp = data;
+            this.userData.UpdateUser(this.temp).subscribe((data) => {
+                if(Object(data)["success"]){
+                    validFeedback.style.display = "block";
+                    invalidFeedback.style.display = "none";  
+                    this.refreshFields(name, acc, pass);
+                    // this.router.navigate(['/']);           
+                    this.ngOnInit();
+                  }
+            });
+        }else{
+            invalidFeedback.style.display = "block";
+        }       
+    }
+
+    refreshFields(inputName: HTMLInputElement, inputAccount: HTMLInputElement, inputPassword: HTMLInputElement) {
+        inputName.value = "";
+        inputAccount.value = "";
+        inputPassword.value = "";
     }
 
 }
