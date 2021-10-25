@@ -21,12 +21,7 @@ export class MbClockComponent implements OnInit {
     endTime!: string;
     startBreak!: string;
     endBreak!: string;
-<<<<<<< HEAD
-    work!: string;
-    rest!: string;
-=======
     rest!: any;
->>>>>>> development/client_app
 
 
     constructor(private route: ActivatedRoute,
@@ -40,10 +35,6 @@ export class MbClockComponent implements OnInit {
             this.myDate = date.toDateString();
         }, 1000);
 
-<<<<<<< HEAD
-        this.state = false;
-        this.break = false;
-=======
         this.route.queryParams.subscribe(params => {
             this.user = params.user;
             this.id = params.id;
@@ -52,32 +43,12 @@ export class MbClockComponent implements OnInit {
         this.state = false;
         this.break = false;
         this.rest =[0,0];
->>>>>>> development/client_app
     }
 
     locations = [
         { lat: -12.371611433792701, lng: 130.8687731560323 },
     ];
 
-<<<<<<< HEAD
-    public clocking() {
-        var clock: string;
-
-        if (this.state) {
-            this.state = !this.state;
-            clock = "Clock Out";
-            this.startTime = this.myTime;
-        } else {
-            this.state = !this.state;
-            clock = "Clock In";
-            this.endTime = this.myTime;
-            console.log("end",this.endTime);
-            console.log(this.startTime);
-            console.log(this.calculateTime(this.startTime, this.endTime));
-        }
-
-        var data = "?desc=" + clock
-=======
     public breaking() {
         var clock: string;
         var flag = false;
@@ -102,31 +73,11 @@ export class MbClockComponent implements OnInit {
 
         if(flag){
             var data = "?desc=" + clock
->>>>>>> development/client_app
             + "&time=" + this.myTime
             + "&date=" + this.myDate
             + "&user_id=" + this.id
             + "&user_name=" + this.user;
 
-<<<<<<< HEAD
-        this.actData.CreateAct(data).subscribe((data) => {
-            // console.log(data);
-        });
-
-    }
-
-    public breaking() {
-        var clock: string;
-
-        if (this.break) {
-            this.break = false;
-            clock = "End Break";
-            this.startBreak = this.myTime;
-        } else {
-            this.break = true;
-            clock = "Start Break";
-            this.endBreak = this.myTime;
-=======
             this.actData.CreateAct(data).subscribe((data) => {
                 // console.log(data);
             });
@@ -160,7 +111,6 @@ export class MbClockComponent implements OnInit {
             
 
             this.rest =[0,0];
->>>>>>> development/client_app
         }
 
         var data = "?desc=" + clock
@@ -172,18 +122,6 @@ export class MbClockComponent implements OnInit {
         this.actData.CreateAct(data).subscribe((data) => {
             // console.log(data);
         });
-<<<<<<< HEAD
-    }
-
-    calculateTime(time1: any, time2: any){
-        // return min
-        
-        var a1 = time1.split(":").map(Number);
-        var a2 = time2.split(":").map(Number);
-        console.log(a1);
-        console.log(a2);
-        return ((a2[0]-a1[0])*60) - (a2[1]-a1[1]);
-=======
 
     }
 
@@ -203,7 +141,6 @@ export class MbClockComponent implements OnInit {
     subTime(x:any, y:any){
         let t = ( y[0]*60 + y[1] ) - ( x[0]*60 + x[1] );
         return [ Math.floor(t/60) , t%60 ];
->>>>>>> development/client_app
     }
 
 }
