@@ -13,6 +13,8 @@ namespace WEB_API.Models.Act
         public string date { get; set; }
         public int user_id { get; set; }
         public string user_name { get; set; }
+        public string lat { get; set; }
+        public string lng { get; set; }
 
     }
 }

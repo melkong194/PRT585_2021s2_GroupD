@@ -14,5 +14,7 @@ namespace DAL.Entities
         public String Act_Date { get; set; }
         public Int64 Act_userID { get; set; }
         public String Act_userName { get; set; }
+        public String Act_lat { get; set; }
+        public String Act_lng { get; set; }
     }
 }

@@ -40,7 +40,9 @@ namespace LOGIC.Services.Implementation
                         time = s.Act_Time,
                         date = s.Act_Date,
                         user_id = s.Act_userID,
-                        user_name = s.Act_userName
+                        user_name = s.Act_userName, 
+                        lat = s.Act_lat,
+                        lng = s.Act_lng,
                     });
                 });
 
@@ -77,7 +79,9 @@ namespace LOGIC.Services.Implementation
                     time = Act.Act_Time,
                     date = Act.Act_Date,
                     user_id = Act.Act_userID,
-                    user_name = Act.Act_userName
+                    user_name = Act.Act_userName,
+                    lat = Act.Act_lat,
+                    lng = Act.Act_lng,
                 };
 
                 //SET SUCCESSFUL RESULT VALUES
@@ -102,7 +106,7 @@ namespace LOGIC.Services.Implementation
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async Task<Generic_ResultSet<Act_ResultSet>> AddAct(string desc, string time, string date, Int64 user_id, string user_name)
+        public async Task<Generic_ResultSet<Act_ResultSet>> AddAct(string desc, string time, string date, Int64 user_id, string user_name, string lat, string lng)
         {
             Generic_ResultSet<Act_ResultSet> result = new Generic_ResultSet<Act_ResultSet>();
             try
@@ -114,7 +118,9 @@ namespace LOGIC.Services.Implementation
                     Act_Time = time,
                     Act_Date = date,
                     Act_userID = user_id,
-                    Act_userName = user_name
+                    Act_userName = user_name,
+                    Act_lat = lat,
+                    Act_lng = lng,
                 };
 
                 //ADD Act TO DB
@@ -128,7 +134,9 @@ namespace LOGIC.Services.Implementation
                     time = Act.Act_Time,
                     date = Act.Act_Date,
                     user_id = Act.Act_userID,
-                    user_name = Act.Act_userName
+                    user_name = Act.Act_userName,
+                    lat = Act.Act_lat,
+                    lng = Act.Act_lng,
                 };
 
                 //SET SUCCESSFUL RESULT VALUES
@@ -154,7 +162,7 @@ namespace LOGIC.Services.Implementation
         /// <param name="act_id"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async Task<Generic_ResultSet<Act_ResultSet>> UpdateAct(Int64 act_id, string desc, string time, string date, Int64 user_id, string user_name)
+        public async Task<Generic_ResultSet<Act_ResultSet>> UpdateAct(Int64 act_id, string desc, string time, string date, Int64 user_id, string user_name, string lat, string lng)
         {
             Generic_ResultSet<Act_ResultSet> result = new Generic_ResultSet<Act_ResultSet>();
             try
@@ -167,7 +175,9 @@ namespace LOGIC.Services.Implementation
                     Act_Time = time,
                     Act_Date = date,
                     Act_userID = user_id,
-                    Act_userName = user_name
+                    Act_userName = user_name,
+                    Act_lat = lat,
+                    Act_lng = lng,
                     //Act_ModifiedDate = DateTime.UtcNow 
                 };
 
@@ -182,7 +192,9 @@ namespace LOGIC.Services.Implementation
                     time = Act.Act_Time,
                     date = Act.Act_Date,
                     user_id = Act.Act_userID,
-                    user_name = Act.Act_userName
+                    user_name = Act.Act_userName,
+                    lat = Act.Act_lat,
+                    lng = Act.Act_lng,
                 };
 
                 //SET SUCCESSFUL RESULT VALUES

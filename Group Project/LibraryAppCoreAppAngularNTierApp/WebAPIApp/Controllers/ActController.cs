@@ -24,9 +24,9 @@ namespace WEB_API.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddAct(string desc, string time, string date, Int64 user_id, string user_name)
+        public async Task<IActionResult> AddAct(string desc, string time, string date, Int64 user_id, string user_name, string lat, string lng)
         {
-            var result = await _Act_Service.AddAct(desc, time, date, user_id, user_name);
+            var result = await _Act_Service.AddAct(desc, time, date, user_id, user_name,  lat,  lng);
             switch (result.success)
             {
                 case true:
@@ -56,7 +56,7 @@ namespace WEB_API.Controllers
         [Route("[action]")]
         public async Task<IActionResult> UpdateAct(Act_Pass_Object act)
         {
-            var result = await _Act_Service.UpdateAct(act.id, act.desc, act.time, act.date, act.user_id, act.user_name);
+            var result = await _Act_Service.UpdateAct(act.id, act.desc, act.time, act.date, act.user_id, act.user_name, act.lat,  act.lng);
             switch (result.success)
             {
                 case true:
