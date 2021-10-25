@@ -33,9 +33,51 @@
         </mat-sidenav>
 
         <mat-sidenav-content fxFlexFill>
-                <app-mb-clock *ngIf="child==''"></app-mb-clock>
+                <!-- <app-mb-clock *ngIf="child==''"></app-mb-clock> -->
                 <app-mb-profile *ngIf="child=='profile'"></app-mb-profile>
                 <app-mb-timesheet *ngIf="child=='timesheet'"></app-mb-timesheet>
+                
+                <div *ngIf="child==''">
+                    <agm-map [latitude]="locations[0].lat" [longitude]="locations[0].lng" [zoom]="15" [disableDefaultUI]="true">
+                        <agm-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng">
+                        </agm-marker>
+                    </agm-map>
+                    
+                    <div *ngIf="(!state && !break) || (state && break); else notCountingTime">
+                        <div class="currentTime">{{ myTime }}</div>
+                        <div class="currentDate">{{ myDate }}</div>
+                    </div>
+                    <ng-template #notCountingTime>
+                        <div class="currentTime colorGreen">{{ myTime }}</div>
+                        <div class="currentDate colorGreen">{{ myDate }}</div>
+                    </ng-template>
+                    
+                    
+                    <div *ngIf="state; else notState">
+                        <a class="clockbuttonShadow1 bgRed"></a>
+                        <a class="clockbuttonShadow2 bgRed"></a>
+                        <a class="clockbutton bgRed" (click)="clocking()"><span><i class="fa fa-clock-o"
+                                    aria-hidden="true"></i></span><span>End Shift</span></a>
+                    </div>
+                    <ng-template #notState>
+                        <a class="clockbuttonShadow1"></a>
+                        <a class="clockbuttonShadow2"></a>
+                        <a class="clockbutton" (click)="clocking()"><span><i class="fa fa-clock-o" aria-hidden="true"></i></span><span>Start
+                                Shift</span></a>
+                    </ng-template>
+                    
+                    
+                    <div *ngIf="!break; else notTakeBreak">
+                        <button mat-raised-button (click)="breaking()" color="primary" type="button" class="breakbutton"><i
+                                class="fa fa-coffee" aria-hidden="true"></i> Take Break</button>
+                    </div>
+                    <ng-template #notTakeBreak>
+                        <button mat-raised-button (click)="breaking()" color="danger" type="button" class="breakbutton"><i
+                                class="fa fa-coffee" aria-hidden="true"></i> End Break</button>
+                    </ng-template>
+                </div>
+
+
             
         </mat-sidenav-content>
     </mat-sidenav-container>
