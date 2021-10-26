@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SchedulerEvent } from "@progress/kendo-angular-scheduler";
 import { EventAPIService } from '../services/event-api.service';
 import { UserAPIService } from '../services/user-api.service';
+import * as XLSX from 'xlsx';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface User {
   value: string;
@@ -40,6 +42,7 @@ export class TimeSheetComponent implements OnInit {
   constructor(
     private userData: UserAPIService,
     private eventData : EventAPIService,
+    private _snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
@@ -232,6 +235,84 @@ export class TimeSheetComponent implements OnInit {
     inputDate.value = "";
   }
 
+  
+
+  importPDF(event: any) {
+    var importData: any[][];
+    var target: DataTransfer = <DataTransfer>(event.target);
+
+    if(target.files.length !== 1) {
+      console.log("More than 1 file!!!");
+    }
+
+    var reader: FileReader = new FileReader();
+
+    reader.onload = (e: any) => {
+      var bstr: string = e.target.result;
+      var wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
+      var wsname: string = wb.SheetNames[0];
+      var ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+      importData = (XLSX.utils.sheet_to_json(ws, {header: 1}));
+
+      for(var _i = 1; _i < importData.length; _i++) {
+        var data = "?user_id=" + importData[_i][0]
+        + "&user_name=" + importData[_i][1]
+        + "&title=" + importData[_i][2]
+        + "&start=" + importData[_i][5] + " " + importData[_i][3]
+        + "&end=" + importData[_i][5] + " " + importData[_i][4];
+
+        this.eventData.CreateEvent(data).subscribe((data) => {
+          
+
+          if(Object(data)["success"]){
+
+            this._snackBar.openFromComponent(SuccessSnack, {
+              duration: 5000,
+            });
+
+            this.ngOnInit();
+          } else {
+            this._snackBar.openFromComponent(FailSnack, {
+              duration: 5000,
+            });
+          }
+          
+        });
+      }
+    };
+
+    reader.readAsBinaryString(target.files[0]);
+  }
 
 }
 
+@Component({
+  selector: 'success-snack',
+  template: `
+    <span class="text">
+      Request succeeded!!!
+    </span>`,
+  styles: [`
+    .text {
+      color: green;
+    }  
+  `]
+
+})
+export class SuccessSnack {}
+
+@Component({
+  selector: 'success-snack',
+  template: `
+    <span class="text">
+      Request Failed!!!
+    </span>`,
+  styles: [`
+    .text {
+      color: red;
+    }  
+  `]
+
+})
+export class FailSnack {}

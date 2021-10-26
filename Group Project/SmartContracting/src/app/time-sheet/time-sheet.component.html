@@ -10,11 +10,13 @@
     >
 
       <ng-template kendoSchedulerToolbarTemplate>
+        <input type="file" (change)="importPDF($event)" multiple="false"/>
         <button kendoSchedulerPDFCommand>Export PDF</button>
         <div kendoSchedulerToolbarNavigation></div>
         <span class="k-spacer"></span>
         <div kendoSchedulerToolbarViewSelector></div>
       </ng-template>
+
       <kendo-scheduler-pdf fileName="scheduler.pdf"> </kendo-scheduler-pdf>
 
       <kendo-scheduler-day-view> </kendo-scheduler-day-view>

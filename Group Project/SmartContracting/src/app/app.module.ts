@@ -43,6 +43,7 @@ import { PDFModule } from "@progress/kendo-angular-scheduler";
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import {MatSortModule} from '@angular/material/sort';
     PDFExportModule,
     PDFModule,
     MatAutocompleteModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
