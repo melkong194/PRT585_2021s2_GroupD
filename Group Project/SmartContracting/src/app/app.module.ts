@@ -42,6 +42,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { PDFModule } from "@progress/kendo-angular-scheduler";
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatNativeDateModule,
     PDFExportModule,
     PDFModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,7 +20,7 @@ export interface ActData {
 })
 export class ActPageComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'user', 'userID', 'desc', 'time', 'date'];
+  displayedColumns: string[] = ['act_id', 'user_name', 'user_id', 'desc', 'time', 'date'];
   dataSource!: MatTableDataSource<ActData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

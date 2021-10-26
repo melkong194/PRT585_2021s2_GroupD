@@ -39,7 +39,7 @@ export interface User {
 })
 export class HomePageComponent implements AfterViewInit  {
 
-  displayedColumns: string[] = ['name', 'userID','role', 'status', 'hours', 'report'];
+  displayedColumns: string[] = ['name', 'user_id','role', 'status', 'hour', 'report'];
   dataSource!: MatTableDataSource<UserData>;
 
   actColumns: string[] = ['time', 'arrow', 'desc']
