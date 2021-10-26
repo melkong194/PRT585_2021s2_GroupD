@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MbHomePageComponent } from './mb-home-page/mb-home-page.component';
+import { DialogMap } from './act-page/act-page.component';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { AgmCoreModule } from '@agm/core';
@@ -44,6 +45,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -60,6 +62,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MbClockComponent,
     ActPageComponent,
     UserProfileComponent,
+    DialogMap
   ],
   imports: [
     BrowserModule,
@@ -104,7 +107,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     PDFModule,
     MatAutocompleteModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

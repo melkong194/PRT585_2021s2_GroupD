@@ -88,6 +88,16 @@
     <div class="tab">
 
       <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="rangePicker" [rangePicker]="picker2">
+          <input matStartDate formControlName="start" placeholder="Start date" id="rangeStart">
+          <input matEndDate formControlName="end" placeholder="End date" id="rangeEnd" (dateChange)="pickRange()">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker2></mat-date-range-picker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
         <mat-label>Select Event ID</mat-label>
         <mat-select id="event" [(ngModel)]="selectedEvent" name="event">
             <mat-option (click)="noneRefreshEvent()">None</mat-option>
@@ -116,7 +126,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Enter a date range</mat-label>
+        <mat-label>Enter a date</mat-label>
         <input matInput [matDatepicker]="picker1" id="datePickUpdate">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>

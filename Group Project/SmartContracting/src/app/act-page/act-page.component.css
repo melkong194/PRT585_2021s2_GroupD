@@ -29,3 +29,7 @@ margin-left: 5%;
 .example-card {
   display: none;
 }
+
+td, th {
+  width: 13%;
+}

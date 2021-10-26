@@ -58,19 +58,6 @@ export class TimeSheetComponent implements OnInit {
       }
     });
 
-    this.events = [];
-    this.eventData.GetAllEvents().subscribe((data) => {
-      this.dataEvent =  Object(data)["result_set"];
-      for(var _i = 0; _i < Object(data)["result_set"].length; _i++) {
-        var temp = {
-          value: Object(data)["result_set"][_i].event_id,
-          viewValue: Object(data)["result_set"][_i].event_id + ": " + Object(data)["result_set"][_i].title
-            + " - " + Object(data)["result_set"][_i].user_name
-        }
-        this.events.push(temp);
-      }
-    });
-
     const currentYear = new Date().getFullYear();
 
     const parseAdjust = (eventDate: string): Date => {
@@ -283,6 +270,29 @@ export class TimeSheetComponent implements OnInit {
     };
 
     reader.readAsBinaryString(target.files[0]);
+  }
+
+  rangePicker = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+
+  pickRange() {
+    this.events = [];
+    this.eventData.GetAllEvents().subscribe((data) => {
+      this.dataEvent =  Object(data)["result_set"];
+      for(var _i = 0; _i < Object(data)["result_set"].length; _i++) {
+        if(this.rangePicker.controls.start.value <= new Date(Object(data)["result_set"][_i].start.split(" ")[0]) && 
+              new Date(Object(data)["result_set"][_i].start.split(" ")[0]) <= this.rangePicker.controls.end.value) {
+          var temp = {
+            value: Object(data)["result_set"][_i].event_id,
+            viewValue: Object(data)["result_set"][_i].event_id + ": " + Object(data)["result_set"][_i].title
+              + " - " + Object(data)["result_set"][_i].user_name
+          }
+          this.events.push(temp);
+        }
+      }
+    });
   }
 
 }
