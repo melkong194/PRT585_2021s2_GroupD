@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MbHomePageComponent } from './mb-home-page/mb-home-page.component';
+import { DialogMap } from './act-page/act-page.component';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { AgmCoreModule } from '@agm/core';
@@ -42,6 +43,9 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { PDFModule } from "@progress/kendo-angular-scheduler";
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -59,6 +63,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MbClockComponent,
     ActPageComponent,
     UserProfileComponent,
+    DialogMap
   ],
   imports: [
     BrowserModule,
@@ -101,7 +106,10 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatNativeDateModule,
     PDFExportModule,
     PDFModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

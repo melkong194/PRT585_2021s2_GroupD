@@ -20,14 +20,14 @@
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="userID">
+        <ng-container matColumnDef="user_id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Staff ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.user_id}} </td>
+          <td mat-cell *matCellDef="let row"> {{ row.user_id }} </td>
         </ng-container>
 
         <ng-container matColumnDef="role">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
-          <td mat-cell *matCellDef="let row"> {{row.role}} </td>
+          <td mat-cell *matCellDef="let row"> {{ row.role }} </td>
         </ng-container>
 
         <ng-container matColumnDef="status">
@@ -35,7 +35,7 @@
           <td mat-cell *matCellDef="let row"> <button mat-stroked-button color="primary"> {{ row.status }} </button> </td>
         </ng-container>
 
-        <ng-container matColumnDef="hours">
+        <ng-container matColumnDef="hour">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Hours </th>
           <td mat-cell *matCellDef="let row"> {{row.hour}} </td>
         </ng-container>
@@ -64,28 +64,29 @@
         <mat-card-header>
           <mat-card-title>Activities Logs</mat-card-title>
         </mat-card-header>
+        <mat-divider></mat-divider>
         
         <mat-card-content>
 
           <table mat-table [dataSource]="actSource">
 
             <ng-container matColumnDef="time">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+              <!-- <th mat-header-cell *matHeaderCellDef> </th> -->
               <td mat-cell *matCellDef="let row"> {{ row.time }} <br> {{ row.date }} </td>
             </ng-container>
 
             <ng-container matColumnDef="arrow">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+              <!-- <th mat-header-cell *matHeaderCellDef> </th> -->
               <td mat-cell *matCellDef="let row"> <i class="fa fa-arrow-right"></i> </td>
             </ng-container>
             
             <ng-container matColumnDef="desc">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+              <!-- <th mat-header-cell *matHeaderCellDef> </th> -->
               <td mat-cell *matCellDef="let row"> {{ row.user_name }} <br> 
                 <button mat-flat-button color="primary"> {{ row.desc }} </button> </td>
             </ng-container>
             
-            <tr mat-header-row *matHeaderRowDef="actColumns"></tr>
+            <!-- <tr mat-header-row *matHeaderRowDef="actColumns"></tr> -->
             <tr mat-row *matRowDef="let row; columns: actColumns;"></tr>
 
           </table>
@@ -129,8 +130,10 @@
         </mat-card-header>
         
         <mat-card-content>
-          <agm-map [latitude]="locations[0].lat" [longitude]="locations[0].lng" [zoom]="15" [disableDefaultUI]="true">
-            <agm-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng"></agm-marker>
+          <agm-map [latitude]="CurLat" [longitude]="CurLng" [zoom]="17" [disableDefaultUI]="true">
+            <agm-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng"
+              [label]="{text: location.user_name, color: 'white'}"
+            ></agm-marker>
           </agm-map>
         </mat-card-content>
       </mat-card>

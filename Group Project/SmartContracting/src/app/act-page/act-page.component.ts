@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,6 +12,8 @@ export interface ActData {
   desc: string;
   time: string;
   date: string;
+  lat: string;
+  lng: string;
 }
 
 @Component({
@@ -20,13 +23,15 @@ export interface ActData {
 })
 export class ActPageComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'user', 'userID', 'desc', 'time', 'date'];
+  displayedColumns: string[] = ['act_id', 'user_name', 'user_id', 'desc', 'time', 'date', 'location'];
   dataSource!: MatTableDataSource<ActData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private actData: ActAPIService) { }
+  constructor(
+    private actData: ActAPIService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.actData.GetAllAct().subscribe((data) => {
@@ -45,4 +50,43 @@ export class ActPageComponent implements OnInit {
     }
   }
 
+  openLoc(lat: string, lng: string) {
+    const dialogRef = this.dialog.open(DialogMap, {
+      width: '50%',
+      height: '70%',
+      data: {
+        lat: Number(lat),
+        lng: Number(lng)
+      }
+    })
+  }
+
+}
+
+export interface DialogData {
+  lat: number;
+  lng: number;
+}
+
+@Component({
+  selector: 'dialog-map',
+  template: `
+  <agm-map [latitude]="data.lat" [longitude]="data.lng" [zoom]="17" [disableDefaultUI]="true">
+    <agm-marker [latitude]="data.lat" [longitude]="data.lng"></agm-marker>
+  </agm-map>
+  `,
+  styles: [`
+    agm-map {
+      height: 100%;
+    }
+  `]
+})
+export class DialogMap {
+  constructor(
+    public dialogRef: MatDialogRef<DialogMap>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

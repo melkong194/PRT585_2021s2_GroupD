@@ -39,7 +39,7 @@ export interface User {
 })
 export class HomePageComponent implements AfterViewInit  {
 
-  displayedColumns: string[] = ['name', 'userID','role', 'status', 'hours', 'report'];
+  displayedColumns: string[] = ['name', 'user_id','role', 'status', 'hour', 'report'];
   dataSource!: MatTableDataSource<UserData>;
 
   actColumns: string[] = ['time', 'arrow', 'desc']
@@ -53,6 +53,17 @@ export class HomePageComponent implements AfterViewInit  {
 
   mapUsers: any[] = [];
 
+  //Map autocomplete
+  myControl = new FormControl();
+  options: User[] = [];
+  filteredOptions!: Observable<User[]>;
+
+  locations: any[] = [];
+
+  CurLat = -12.371611433792701;
+
+  CurLng = 130.8687731560323;
+
 
   constructor(
     private actAPI: ActAPIService,
@@ -61,53 +72,97 @@ export class HomePageComponent implements AfterViewInit  {
     private route: ActivatedRoute
   ) {
 
-    this.actAPI.GetAllAct().subscribe((data) => {
-      this.actSource = new MatTableDataSource(Object(data)["result_set"].reverse().slice(0,10));
-    });
+
 
   }
 
   ngAfterViewInit() {
 
-    this.userData.GetAllUsers().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(Object(data)["result_set"]);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+    setInterval(() => {
 
+      var tempMapUsers: any[] = [];
+      var tempOptions: { name: any; id: any; }[] = [];
 
-      for(var _i = 0; _i < Object(data)["result_set"].length; _i++) {
-        if(Object(data)["result_set"][_i].status == "working" || Object(data)["result_set"][_i].status == "breaking") {
-          var temp = {
-            image : "https://material.angular.io/assets/img/examples/shiba1.jpg",
-            name : Object(data)["result_set"][_i].name,
-            id: Object(data)["result_set"][_i].user_id
+      this.userData.GetAllUsers().subscribe((data) => {
+        this.dataSource = new MatTableDataSource(Object(data)["result_set"]);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+        
+
+        for(var _i = 0; _i < Object(data)["result_set"].length; _i++) {
+          if(Object(data)["result_set"][_i].status == "working" || Object(data)["result_set"][_i].status == "breaking") {
+            var temp = {
+              image : "https://material.angular.io/assets/img/examples/shiba1.jpg",
+              name : Object(data)["result_set"][_i].name,
+              id: Object(data)["result_set"][_i].user_id
+            }
+            tempMapUsers.push(temp);
+
+            var tempAuto = {
+              name: Object(data)["result_set"][_i].name,
+              id: Object(data)["result_set"][_i].user_id
+            }
+            tempOptions.push(tempAuto);
           }
-          this.mapUsers.push(temp);
-
-          var tempAuto = {
-            name: Object(data)["result_set"][_i].name,
-            id: Object(data)["result_set"][_i].user_id
-          }
-          this.options.push(tempAuto);
         }
-      }
 
-      //Map autocomplete
-      this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.options.slice())
-      );
+        
 
-    });
+        if(JSON.stringify(this.mapUsers) != JSON.stringify(tempMapUsers)) {
+          this.mapUsers = tempMapUsers;
+        }
+
+        if(JSON.stringify(this.options) != JSON.stringify(tempOptions)) {
+          this.options = tempOptions;
+        }
+
+
+        //market data
+
+        this.actAPI.GetAllAct().subscribe((data) => {
+          this.actSource = new MatTableDataSource(Object(data)["result_set"].reverse().slice(0,12));
+          
+          if(this.mapUsers.length != 0) {
+            var filterData = Object(data)["result_set"].filter((item: any) => {
+              let date = new Date();
+              return item['date'] == date.toDateString(), 
+                item['desc'] == "Clock In"
+            });
+    
+            var markerData: any[] = [];
+  
+            for(var _i = 0; _i < this.mapUsers.length; _i++) {
+              for(var _j = 0; _j < filterData.length; _j++) {
+                if(filterData[_j].user_id == this.mapUsers[_i].id && filterData[_j].user_name == this.mapUsers[_i].name) {
+                  markerData.push(filterData[_j]);
+                  break;
+                }
+              }
+            }
+            
+            if(JSON.stringify(this.locations) !== JSON.stringify(markerData)) {
+              this.locations = markerData;
+            }
+
+          } 
+        });
+
+      });
+
+    }, 500);
+
+    //Map autocomplete
+    this.filteredOptions = this.myControl.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => typeof value === 'string' ? value : value.name),
+      map(name => name ? this._filter(name) : this.options.slice())
+    );
 
     this.route.queryParams.subscribe(params => {
       this.user = params.user;
     });
-
-    
-    
   }
 
   applyFilter(event: Event) {
@@ -118,22 +173,6 @@ export class HomePageComponent implements AfterViewInit  {
       this.dataSource.paginator.firstPage();
     }
   }
-
-
-  locations = [
-    { lat: -12.371611433792701, lng: 130.8687731560323 },
-    { lat: -12.381611433792701, lng: 130.8687731560323 },
-    { lat: -12.371611433792701, lng: 130.8787731560323 },
-  ];
-  
-  icon = {
-    url: 'https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png',
-    scaledSize: {
-      width: 30,
-      height: 30
-    }
-  }
-
 
   navProfile(user_id: number, name: string) {
     let navigationExtras: NavigationExtras = {
@@ -147,12 +186,6 @@ export class HomePageComponent implements AfterViewInit  {
     this.router.navigate(['/userProfile'], navigationExtras);
   }
 
-
-  //Map autocomplete
-  myControl = new FormControl();
-  options: User[] = [];
-  filteredOptions!: Observable<User[]>;
-
   displayFn(user: User): string {
     return user && user.name ? user.name : '';
   }
@@ -165,7 +198,13 @@ export class HomePageComponent implements AfterViewInit  {
 
 
   mapSearch(id: number, name: string) {
-    console.log(name);
+    var temp = this.locations.filter(item => {
+      return item.user_id == id,
+        item.user_name == name
+    });
+
+    this.CurLat = Number(temp[0].lat);
+    this.CurLng = Number(temp[0].lng);
   }
 }
 
