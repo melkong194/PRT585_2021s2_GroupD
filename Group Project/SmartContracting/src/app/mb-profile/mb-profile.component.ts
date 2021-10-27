@@ -4,6 +4,7 @@ import { UserAPIService } from '../services/user-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
+
 @Component({
     selector: 'app-mb-profile',
     templateUrl: './mb-profile.component.html',
@@ -18,7 +19,7 @@ export class MbProfileComponent implements OnInit {
     constructor(
         private userData: UserAPIService,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
         ) { }
 
     ngOnInit(): void {
@@ -44,6 +45,7 @@ export class MbProfileComponent implements OnInit {
         var invalidFeedback = <HTMLInputElement>document.getElementById("invalid-feedback");
         var validFeedback = <HTMLInputElement>document.getElementById("valid-feedback");
 
+
         if(name.value !==null && acc.value !==null && pass.value !==null){
             let data = {
                 "id": this.id,
@@ -54,6 +56,17 @@ export class MbProfileComponent implements OnInit {
                 "role": this.temp['role'],
                 "hour": this.temp['hour'],
             };
+
+            let email : any;  
+
+            email = {
+                ToEMail: 'melkong194@gmail.com',
+                Subject: 'testing',
+                Body: 'ur account ifo has been updated!',
+            };
+
+            this.userData.SendEmai(email).subscribe((data) => {
+            });
     
             this.temp = data;
             this.userData.UpdateUser(this.temp).subscribe((data) => {
@@ -65,6 +78,9 @@ export class MbProfileComponent implements OnInit {
                     this.ngOnInit();
                   }
             });
+
+            
+
         }else{
             invalidFeedback.style.display = "block";
         }       
@@ -75,5 +91,7 @@ export class MbProfileComponent implements OnInit {
         inputAccount.value = "";
         inputPassword.value = "";
     }
+
+   
 
 }

@@ -82,4 +82,15 @@
             
         </mat-sidenav-content>
     </mat-sidenav-container>
+
+    <div class="panelWrapper" id="popup">
+        <div class="popupPanel">
+            <p> Shift: {{popupString[0]}} <br><br>
+                Break: {{popupString[1]}} <br><br> 
+                Work: {{popupString[2]}}<br><br><br>
+                <button (click)="closePopup()" class="btn btn-primary"> OK </button>
+            </p>
+        </div>
+	</div>
+
 </div>

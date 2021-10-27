@@ -29,6 +29,7 @@ export class MbHomePageComponent implements OnInit {
 
     child!: string;
     temp!: any;
+    popupString!: any;
 
     lat: number = 0;
     lng: number = 0;
@@ -67,8 +68,7 @@ export class MbHomePageComponent implements OnInit {
             }
         });
 
-        this.map.getLocation().subscribe(data => {
-            
+        this.map.getLocation().subscribe(data => {            
             this.lat = Number(data.latitude);
             this.lng = Number(data.longitude);
             this.locations = [
@@ -80,10 +80,8 @@ export class MbHomePageComponent implements OnInit {
         this.break = false;
         this.rest = [0, 0];
         this.child = '';
-
+        this.popupString = ['', '' , '']
     }
-
-
 
     onProfile() {
         this.child = 'profile';
@@ -100,6 +98,7 @@ export class MbHomePageComponent implements OnInit {
         var clock: string;
         var flag = false;
         if (!this.break) {
+            clock = "abc";
             if (this.state) {
                 this.break = !this.break;
                 clock = "Start Break";
@@ -107,7 +106,7 @@ export class MbHomePageComponent implements OnInit {
                 flag = true;
                 this.updateUser("breaking", null);
             }
-            clock = "End Break";
+           
         } else {
             this.break = !this.break;
             clock = "End Break";
@@ -158,16 +157,20 @@ export class MbHomePageComponent implements OnInit {
             this.state = !this.state;
             clock = "Clock Out";
             this.endTime = this.myTime;
-
-            let work = this.subTime(this.rest, this.durationCal(this.startTime, this.endTime));
-            this.rest = [0, 0];
-
+            let thiswork = this.durationCal(this.startTime, this.endTime);
+            let work = this.subTime(this.rest, thiswork);
 
             let t = this.temp['hour'].split(":", 2);
             let h = this.addTime([t[0], t[1]], work);
             this.worked = h[0]+"hour "+ h[1]+"min";
             this.updateUser("offline", h[0] + ":" + h[1]);
 
+            this.popupString[0]= thiswork[0]+"hour "+ thiswork[1]+"min";
+            this.popupString[1]= this.rest[0]+"hour "+ this.rest[1]+"min";
+            this.popupString[2]= work[0]+"hour "+ work[1]+"min";
+            this.rest = [0, 0];
+            var pop = <HTMLInputElement>document.getElementById("popup");
+            pop.style.display = "block";
         }
 
         var data = "?desc=" + clock
@@ -214,6 +217,11 @@ export class MbHomePageComponent implements OnInit {
         this.temp = data;
         this.userData.UpdateUser(this.temp).subscribe((data) => {
         });
+    }
+
+    closePopup(){
+        var pop = <HTMLInputElement>document.getElementById("popup");
+        pop.style.display = "none";
     }
 
 }

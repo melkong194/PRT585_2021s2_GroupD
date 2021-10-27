@@ -1,35 +1,31 @@
 <mat-tab-group>
 
-    <mat-tab label="Update Accounts" id="tab1"> 
+    <mat-tab label="Update Accounts" id="tab1">
         <div class="frame">
             <mat-form-field appearance="fill">
                 <mat-label>Name</mat-label>
                 <input matInput id="name">
             </mat-form-field>
-    
+
             <mat-form-field appearance="fill">
                 <mat-label>Account</mat-label>
                 <input matInput id="account">
             </mat-form-field>
-    
+
             <mat-form-field appearance="fill">
                 <mat-label>Password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" id="password">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-            </mat-form-field> 
+            </mat-form-field>
             <br>
             <button mat-raised-button color="primary" (click)="updateAccount()">update</button>
             <div class="invalid-feedback" id="invalid-feedback">invalid input data</div>
             <div class="valid-feedback" id="valid-feedback">You have succeed update User.</div>
         </div>
-    
-    </mat-tab>
-    <mat-tab label="Delete Accounts"> 
-        
 
-    
     </mat-tab>
 
-  </mat-tab-group>
+</mat-tab-group>

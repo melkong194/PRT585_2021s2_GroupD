@@ -6,7 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WEB_API.email;
+
 using WEB_API.Models.User;
+
 
 namespace WEB_API.Controllers
 {
@@ -16,6 +19,7 @@ namespace WEB_API.Controllers
     public class UserController : ControllerBase
     {
         private IUser_Service _User_Service;
+        private IMailService _emailSender;
 
         public UserController(IUser_Service User_Service)
         {
@@ -57,6 +61,7 @@ namespace WEB_API.Controllers
         public async Task<IActionResult> UpdateUser(User_Pass_Object user)
         {
             var result = await _User_Service.UpdateUser(user.id, user.name, user.account, user.password, user.role, user.status, user.hour);
+           
             switch (result.success)
             {
                 case true:

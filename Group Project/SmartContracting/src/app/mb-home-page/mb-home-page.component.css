@@ -128,3 +128,48 @@ agm-map {
   .bgRed{
       background: rgb(94, 2, 2);
   }
+
+  .panelWrapper{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 10;
+    display: none;
+  }
+
+  .popupPanel{
+    background-color: #e4e4e7;
+    opacity: 1;
+    position: absolute;
+    top: 250px;
+    bottom: 250px;
+    left: 50px;
+    right: 50px; 
+    border: solid 1px #d3cab9;
+    z-index: 20;
+    color: #000;
+    border: 1px solid #eee;
+    box-shadow: 0 0px 0px 0 #fafafa, 
+                0 -1px 2px #3d3d3d inset, 
+                0 1px 1px #948eca inset, 
+                0 1px 1px 0 #b2b3d4 inset;
+    top: 40%;
+    bottom: 35%;
+    left:15%;
+    right: 15%;
+    text-align: center;
+}
+.popupPanel p{
+    font-size: 20px;
+    padding-top: 20px;
+    /* margin-left: 40px; */
+    color:rgb(94, 2, 2);
+}
+
+.popupPanel p button{
+    padding: 6px 15px;
+    width: 90px;
+}

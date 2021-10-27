@@ -10,6 +10,7 @@ export class UserAPIService {
   createUrlAPI = "https://localhost:5001/api/User/AddUser";
   UpdateUrlAPI = "https://localhost:5001/api/User/UpdateUser";
   DeleteUrlAPI = "https://localhost:5001/api/User/DeleteUser";
+  EmailUrl = "https://localhost:5001/api/Email/Send";
 
   constructor(private http:HttpClient) { }
 
@@ -27,5 +28,9 @@ export class UserAPIService {
 
   DeleteUser(data: string) {
     return this.http.post(this.DeleteUrlAPI, data);
+  }
+
+  SendEmai(data: any) {
+    return this.http.post(this.EmailUrl, data);
   }
 }

@@ -14,6 +14,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WEB_API;
+using WEB_API.email;
 
 namespace WebAPIApp
 {
@@ -35,6 +37,9 @@ namespace WebAPIApp
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIApp", Version = "v1" });
             });
+
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, MailService>();
 
             #region CUSTOM SERVICES [D-I]
 
@@ -74,6 +79,8 @@ namespace WebAPIApp
                     });
             });
             #endregion
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
