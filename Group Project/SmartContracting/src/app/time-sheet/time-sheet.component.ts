@@ -243,11 +243,13 @@ export class TimeSheetComponent implements OnInit {
       importData = (XLSX.utils.sheet_to_json(ws, {header: 1}));
 
       for(var _i = 1; _i < importData.length; _i++) {
-        var data = "?user_id=" + importData[_i][0]
-        + "&user_name=" + importData[_i][1]
-        + "&title=" + importData[_i][2]
-        + "&start=" + importData[_i][5] + " " + importData[_i][3]
-        + "&end=" + importData[_i][5] + " " + importData[_i][4];
+        if(importData[_i].length != 0) {
+
+          var data = "?user_id=" + importData[_i][0]
+            + "&user_name=" + importData[_i][1]
+            + "&title=" + importData[_i][2]
+            + "&start=" + importData[_i][5] + " " + importData[_i][3]
+            + "&end=" + importData[_i][5] + " " + importData[_i][4];
 
         this.eventData.CreateEvent(data).subscribe((data) => {
           
@@ -266,6 +268,8 @@ export class TimeSheetComponent implements OnInit {
           }
           
         });
+
+        }
       }
     };
 

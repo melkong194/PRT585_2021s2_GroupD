@@ -60,9 +60,9 @@ export class MbProfileComponent implements OnInit {
             let email : any;  
 
             email = {
-                ToEMail: 'melkong194@gmail.com',
-                Subject: 'testing',
-                Body: 'ur account ifo has been updated!',
+                ToEMail: 'plamvip1999@gmail.com',
+                Subject: 'Updating Account',
+                Body: 'Hi ' + name.value + ', you have succeed to update your account information!',
             };
 
             this.userData.SendEmai(email).subscribe((data) => {
